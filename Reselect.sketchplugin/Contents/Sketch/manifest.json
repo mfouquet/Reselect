@@ -1,0 +1,59 @@
+{
+  "name": "Reselect",
+  "description": "Save selections for later use.",
+  "author": "Michael Fouquet",
+  "authorEmail": "michael.fouquet@me.com",
+  "homepage": "https://github.com/mfouquet/reselect",
+  "version": "1.0",
+  "compatibleVersion": 3,
+  "identifier": "com.mfouquet.sketch.reselect",
+  "commands" : [
+    {
+      "script" : "selectionChanged.cocoascript",
+      "handlers" : {
+        "actions" : {
+          "SelectionChanged.finish" : "onSelectionChanged",
+        }
+      }
+    },
+    {
+      "identifier" : "restorePreviousSelection",
+      "script" : "restorePreviousSelection.cocoascript",
+      "handler" : "restorePreviousSelection",
+      "shortcut" : "ctrl alt d",
+      "name": "Restore Previous Selection"
+    },
+    {
+      "identifier" : "saveCurrentSelection",
+      "script" : "saveCurrentSelection.cocoascript",
+      "handler" : "saveCurrentSelection",
+      "shortcut" : "ctrl alt z",
+      "name": "Save Current Selection"
+    },
+    {
+      "identifier" : "loadSelection",
+      "script" : "loadSelection.cocoascript",
+      "handler" : "loadSelection",
+      "shortcut" : "ctrl alt y",
+      "name": "Load Selection"
+    },
+    {
+      "identifier" : "showSettings",
+      "script" : "showSettings.cocoascript",
+      "handler" : "showSettings",
+      "shortcut" : "ctrl alt y",
+      "name": "Settings"
+    },
+  ],
+  "menu": {
+    "title" : "Reselect",
+    "items" : [
+      "restorePreviousSelection",
+      "-",
+      "saveCurrentSelection",
+      "loadSelection",
+      "-",
+      "showSettings"
+    ]
+  }
+}
