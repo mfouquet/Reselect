@@ -1,6 +1,6 @@
 {
   "name": "Reselect",
-  "description": "Save selections for later use.",
+  "description": "Restore a previous selection or save selections for later use.",
   "author": "Michael Fouquet",
   "authorEmail": "michael.fouquet@me.com",
   "homepage": "https://github.com/mfouquet/reselect",
@@ -20,28 +20,26 @@
       "identifier" : "restorePreviousSelection",
       "script" : "restorePreviousSelection.cocoascript",
       "handler" : "restorePreviousSelection",
-      "shortcut" : "ctrl alt d",
+      "shortcut" : "ctrl alt \\",
       "name": "Restore Previous Selection"
     },
     {
       "identifier" : "saveCurrentSelection",
       "script" : "saveCurrentSelection.cocoascript",
       "handler" : "saveCurrentSelection",
-      "shortcut" : "ctrl alt z",
       "name": "Save Current Selection"
     },
     {
       "identifier" : "loadSelection",
       "script" : "loadSelection.cocoascript",
       "handler" : "loadSelection",
-      "shortcut" : "ctrl alt y",
+      "shortcut" : "ctrl alt ]",
       "name": "Load Selection"
     },
     {
       "identifier" : "showSettings",
       "script" : "showSettings.cocoascript",
       "handler" : "showSettings",
-      "shortcut" : "ctrl alt y",
       "name": "Settings"
     },
   ],

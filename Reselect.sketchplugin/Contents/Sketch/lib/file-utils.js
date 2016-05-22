@@ -16,6 +16,14 @@ var jsonFromFile = function(filePath, mutable) {
   return [NSJSONSerialization JSONObjectWithData:data options:options error:nil];
 }
 
+function jsonFromUrl(url) {
+
+	var request = [NSURLRequest requestWithURL: [NSURL URLWithString:url]],
+		response = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil],
+		responseObj = [NSJSONSerialization JSONObjectWithData: response options: nil error: nil];
+	return responseObj;
+}
+
 var saveJsonToFile = function(jsonObj, filePath) {
     writeTextToFile(stringify(jsonObj), filePath);
 }

@@ -8,6 +8,7 @@ var kReselectSelections = kPluginDomain + ".selections";
 var kReselectHasRestored = kPluginDomain + ".hasRestored";
 var kReselectMaxRestoreCount = kPluginDomain + ".maxRestoreCount";
 var kReselectCheckForUpdates = kPluginDomain + ".checkForUpdates";
+var kReselectLastUpdateCheck = kPluginDomain + ".lastUpdateCheck";
 
 if (!mainThreadDict[kReselectSelections]) {
   mainThreadDict[kReselectSelections] = [];

@@ -36,6 +36,8 @@ var saveCurrentSelection = function(context) {
         // that the user would like to overwrite existing selection
         if (documentFile.selectionsArray[i].selectionName == selectionName) {
           var alert = NSAlert.alloc().init();
+          var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect-warning.icns');
+          alert.setIcon(icon);
           alert.setMessageText("Warning");
           alert.setInformativeText("A selection with that name already exists for this document. Would you like to overwrite?");
           alert.addButtonWithTitle("Yes");

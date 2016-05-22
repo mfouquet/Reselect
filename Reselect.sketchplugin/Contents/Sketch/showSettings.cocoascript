@@ -1,4 +1,5 @@
 @import 'lib/file-utils.js';
+@import 'lib/mainThread-utils.js';
 
 var showSettings = function(context) {
 
@@ -22,7 +23,7 @@ var showSettings = function(context) {
   // wants to store
   var maxRestoreField = NSTextField.alloc().initWithFrame(NSMakeRect(235.0, 70.0, 20.0, 20.0))
   maxRestoreField.cell().setStringValue(settingsFile.maxRestoreCount);
-  accessoryView.addSubview(maxRestoreField)
+  accessoryView.addSubview(maxRestoreField);
 
   // Create a label for the check for updates control
   var checkForUpdatesLabel = NSTextField.alloc().initWithFrame(NSMakeRect(2.5, 20.0, 260.0, 20.0))
@@ -39,17 +40,19 @@ var showSettings = function(context) {
   checkForUpdates.setLabel_forSegment("No", 0);
   checkForUpdates.setLabel_forSegment("Yes", 1);
   checkForUpdates.setSelected_forSegment(true, settingsFile.checkForUpdates);
-  accessoryView.addSubview(checkForUpdates)
+  accessoryView.addSubview(checkForUpdates);
 
   // Create the alert and attach the accessory view
-  var alert = NSAlert.alloc().init()
-  alert.addButtonWithTitle("Save")
-  alert.addButtonWithTitle("Cancel")
-  alert.setAccessoryView(accessoryView)
-  alert.setMessageText("Reselect Settings")
+  var alert = NSAlert.alloc().init();
+  var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
+  alert.setIcon(icon);
+  alert.addButtonWithTitle("Save");
+  alert.addButtonWithTitle("Cancel");
+  alert.setAccessoryView(accessoryView);
+  alert.setMessageText("Reselect Settings");
 
   // Run the modal and capture the values
-  alert.runModal()
+  alert.runModal();
 
   var settingsObject = {
       maxRestoreCount: maxRestoreField.stringValue(),
@@ -58,4 +61,8 @@ var showSettings = function(context) {
 
   // Save the new values to the settings file
   saveJsonToFile(settingsObject, scriptFolder + '/lib/settings.js');
+
+  // Save the values to the main thread as well
+  saveToThreadDict(kReselectMaxRestoreCount, maxRestoreField.stringValue());
+  saveToThreadDict(kReselectCheckForUpdates, checkForUpdates.isSelectedForSegment(1));
 };

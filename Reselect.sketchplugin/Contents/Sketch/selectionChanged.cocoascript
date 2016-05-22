@@ -1,16 +1,16 @@
-@import 'lib/mainThread-utils.js';
 @import 'lib/file-utils.js';
+@import 'lib/mainThread-utils.js';
+@import 'lib/settings-utils.js';
 
 var onSelectionChanged = function(context) {
 
   // Grab the saved values from the threadDictionary
   var vPreviousSelections = loadFromThreadDict(kReselectSelections];
   var vHasRestored = JSON.parse(loadFromThreadDict(kReselectHasRestored));
-  var vMaxRestoreCount = loadFromThreadDict(kReselectMaxRestoreCount];
-  var vCheckForUpdates = loadFromThreadDict(kReselectCheckForUpdates];
+  var vMaxRestoreCount = loadFromThreadDict(kReselectMaxRestoreCount);
 
   // Load the settings if they don't currently exist
-  if (!vMaxRestoreCount || !vCheckForUpdates) {
+  if (!vMaxRestoreCount) {
     loadSettingsFile(context);
   }
 
@@ -56,42 +56,3 @@ var onSelectionChanged = function(context) {
     saveToThreadDict(kReselectHasRestored, JSON.stringify(false));
   }
 };
-
-var loadSettingsFile = function(context) {
-  var scriptPath = context.scriptPath;
-  var scriptFolder = [scriptPath stringByDeletingLastPathComponent];
-  var settingsFile = jsonFromFile(scriptFolder + '/lib/settings.js', true);
-
-  saveToThreadDict(kReselectMaxRestoreCount, settingsFile.maxRestoreCount);
-  saveToThreadDict(kReselectCheckForUpdates, settingsFile.checkForUpdates);
-}
-
-var checkForPluginUpdate = function() {
-  var scriptPath = context.scriptPath;
-  var scriptFolder = [scriptPath stringByDeletingLastPathComponent];
-	var manifestFilePath = scriptFolder + "/manifest.json";
-
-	var manifestJSON = getJSONFromFile(manifestFilePath);
-	var isThereNewUpdate = false;
-
-	try {
-		var response = getJSONFromURL('/manifest.json')
-		if (response && response.version) {
-			if (response.version.toString() != manifestJSON.version.toString()) {
-				isThereNewUpdate = true
-			}
-		}
-	} catch (e) {
-		log(e)
-		return false
-	}
-	return isThereNewUpdate
-}
-
-function getJSONFromURL(url) {
-
-	var request = [NSURLRequest requestWithURL: [NSURL URLWithString:url]],
-		response = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil],
-		responseObj = [NSJSONSerialization JSONObjectWithData: response options: nil error: nil]
-	return responseObj
-}
