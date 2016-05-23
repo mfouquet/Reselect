@@ -8,6 +8,8 @@ Ever deselect when you didn't mean to? Wish you could save a tricky selection th
 
 Reselect allows you to restore a previous selection or save selections for later use (even after you close the document!).
 
+If you want to read more about it, check out this [Medium post](https://medium.com/@_fookay/reselect-sketch-plugin-d6ede304883d).
+
 
 ##Installation
 
