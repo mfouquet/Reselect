@@ -1,18 +1,18 @@
 {
   "name": "Reselect",
   "description": "Restore a previous selection or save selections for later use.",
+  "version": "1.1.0",
+  "identifier": "com.mfouquet.sketch.reselect",
   "author": "Michael Fouquet",
   "authorEmail": "michael.fouquet@me.com",
-  "homepage": "https://github.com/mfouquet/reselect",
-  "version": "1.0",
-  "compatibleVersion": 3,
-  "identifier": "com.mfouquet.sketch.reselect",
+  "compatibleVersion": 4.1,
+  "bundleVersion": 1,
   "commands" : [
     {
       "script" : "selectionChanged.cocoascript",
       "handlers" : {
         "actions" : {
-          "SelectionChanged.finish" : "onSelectionChanged",
+          "SelectionChanged.finish" : "onSelectionChanged"
         }
       }
     },
@@ -41,7 +41,7 @@
       "script" : "showSettings.cocoascript",
       "handler" : "showSettings",
       "name": "Settings"
-    },
+    }
   ],
   "menu": {
     "title" : "Reselect",
