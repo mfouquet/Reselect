@@ -1,12 +1,12 @@
 {
-  "name": "Reselect",
-  "description": "Restore a previous selection or save selections for later use.",
-  "version": "1.1.0",
-  "identifier": "com.mfouquet.sketch.reselect",
-  "author": "Michael Fouquet",
-  "authorEmail": "michael.fouquet@me.com",
-  "compatibleVersion": 4.1,
-  "bundleVersion": 1,
+  "name" : "Reselect",
+  "description" : "Restore a previous selection or save selections for later use.",
+  "version" : "1.1.0",
+  "identifier" : "com.mfouquet.sketch.reselect",
+  "author ": "Michael Fouquet",
+  "authorEmail" : "michael.fouquet@me.com",
+  "compatibleVersion" : 4.1,
+  "bundleVersion" : 1,
   "commands" : [
     {
       "script" : "selectionChanged.cocoascript",
@@ -21,29 +21,29 @@
       "script" : "restorePreviousSelection.cocoascript",
       "handler" : "restorePreviousSelection",
       "shortcut" : "ctrl alt \\",
-      "name": "Restore Previous Selection"
+      "name" : "Restore Previous Selection"
     },
     {
       "identifier" : "saveCurrentSelection",
       "script" : "saveCurrentSelection.cocoascript",
       "handler" : "saveCurrentSelection",
-      "name": "Save Current Selection"
+      "name" : "Save Current Selection"
     },
     {
       "identifier" : "loadSelection",
       "script" : "loadSelection.cocoascript",
       "handler" : "loadSelection",
       "shortcut" : "ctrl alt ]",
-      "name": "Load Selection"
+      "name" : "Load Selection"
     },
     {
       "identifier" : "showSettings",
       "script" : "showSettings.cocoascript",
       "handler" : "showSettings",
-      "name": "Settings"
+      "name" : "Settings"
     }
   ],
-  "menu": {
+  "menu" : {
     "title" : "Reselect",
     "items" : [
       "restorePreviousSelection",

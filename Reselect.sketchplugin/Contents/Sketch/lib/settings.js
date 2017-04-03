@@ -1,1 +1,1 @@
-{"maxRestoreCount":"5","checkForUpdates":0}
+{"maxRestoreCount":"5"}

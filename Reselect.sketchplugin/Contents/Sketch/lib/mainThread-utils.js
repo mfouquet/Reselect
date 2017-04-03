@@ -7,8 +7,6 @@ var kPluginDomain = "com.mfouquet.sketch.reselect"
 var kReselectSelections = kPluginDomain + ".selections";
 var kReselectHasRestored = kPluginDomain + ".hasRestored";
 var kReselectMaxRestoreCount = kPluginDomain + ".maxRestoreCount";
-var kReselectCheckForUpdates = kPluginDomain + ".checkForUpdates";
-var kReselectLastUpdateCheck = kPluginDomain + ".lastUpdateCheck";
 
 if (!mainThreadDict[kReselectSelections]) {
   mainThreadDict[kReselectSelections] = [];
@@ -20,10 +18,6 @@ if (!mainThreadDict[kReselectHasRestored]) {
 
 if (!mainThreadDict[kReselectMaxRestoreCount]) {
   mainThreadDict[kReselectMaxRestoreCount] = null;
-}
-
-if (!mainThreadDict[kReselectCheckForUpdates]) {
-  mainThreadDict[kReselectCheckForUpdates] = null;
 }
 
 var saveToThreadDict = function(threadKey, obj) {
