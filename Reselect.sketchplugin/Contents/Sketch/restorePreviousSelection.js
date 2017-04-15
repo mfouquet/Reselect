@@ -1,12 +1,11 @@
 @import 'lib/file-utils.js';
-@import 'lib/mainThread-utils.js';
+// @import 'lib/mainThread-utils.js';
 @import 'lib/search-utils.js';
 @import 'lib/settings-utils.js';
+@import 'lib/threading.js';
+
 
 var restorePreviousSelection = function(context) {
-
-  // Check for any plugin updates
-  checkForUpdates(context);
 
   // Get the currently selected layers and deselect them all
   var doc = context.document;
@@ -14,7 +13,7 @@ var restorePreviousSelection = function(context) {
   var layers = [page children];
 
   // Get the array of previous selections
-  var vPreviousSelections = loadFromThreadDict(kReselectSelections];
+  var vPreviousSelections = mainThreadDict[kSelections];
 
   // Create a new array to house all of the previous selections
   // Have to do this because the array comes out as an object from the
@@ -34,28 +33,4 @@ var restorePreviousSelection = function(context) {
   // set hasRestored to true
   saveToThreadDict(kReselectSelections, selectionsArr);
   saveToThreadDict(kReselectHasRestored, JSON.stringify(true));
-}
-
-var checkForUpdates = function(context) {
-  var vCheckForUpdates = loadFromThreadDict(kReselectCheckForUpdates);
-
-  if (!vCheckForUpdates) {
-    loadSettingsFile(context);
-  }
-
-  if (vCheckForUpdates) {
-    if (checkForPluginUpdate(context) && isTodayNewDay()) {
-      var scriptPath = context.scriptPath;
-      var scriptFolder = [scriptPath stringByDeletingLastPathComponent];
-
-      // Alert the user there are no selections that exist for that document
-      var alert = NSAlert.alloc().init();
-      var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
-      alert.setIcon(icon);
-      alert.setMessageText("A new version of Reselect is available");
-      alert.setInformativeText("Download the new version at: https://github.com/mfouquet/Reselect");
-      alert.addButtonWithTitle("Ok");
-      alert.runModal();
-    }
-  }
 }

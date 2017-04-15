@@ -9,7 +9,7 @@
   "bundleVersion" : 1,
   "commands" : [
     {
-      "script" : "selectionChanged.cocoascript",
+      "script" : "selectionChanged.js",
       "handlers" : {
         "actions" : {
           "SelectionChanged.finish" : "onSelectionChanged"
@@ -18,27 +18,27 @@
     },
     {
       "identifier" : "restorePreviousSelection",
-      "script" : "restorePreviousSelection.cocoascript",
+      "script" : "restorePreviousSelection.js",
       "handler" : "restorePreviousSelection",
       "shortcut" : "ctrl alt \\",
       "name" : "Restore Previous Selection"
     },
     {
       "identifier" : "saveCurrentSelection",
-      "script" : "saveCurrentSelection.cocoascript",
+      "script" : "saveCurrentSelection.js",
       "handler" : "saveCurrentSelection",
       "name" : "Save Current Selection"
     },
     {
       "identifier" : "loadSelection",
-      "script" : "loadSelection.cocoascript",
+      "script" : "loadSelection.js",
       "handler" : "loadSelection",
       "shortcut" : "ctrl alt ]",
       "name" : "Load Selection"
     },
     {
       "identifier" : "showSettings",
-      "script" : "showSettings.cocoascript",
+      "script" : "showSettings.js",
       "handler" : "showSettings",
       "name" : "Settings"
     }
