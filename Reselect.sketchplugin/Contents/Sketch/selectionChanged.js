@@ -1,3 +1,64 @@
+// @import 'lib/threading.js';
+//
+//
+// var onSelectionChanged = function(context) {
+// //   var sketch = context.api()
+// //
+// // log(sketch.api_version)
+// // log(sketch.version)
+// // log(sketch.build)
+// // log(sketch.full_version)
+// //
+// // var document = sketch.selectedDocument;
+// // log(document);
+// // var page = document.selectedPage;
+// // log(page);
+// // var selection = document.selectedLayers;
+// // log(selection);
+//
+//   var previousSelection = context.actionContext.oldSelection;
+//
+//   if (previousSelection.count() > 0) {
+//     // var selectionsArr = "[";
+//
+//     // for (var p = 0; p < previousSelection.count(); p++) {
+//     //   selectionsArr += "\"" + previousSelection[p].objectID().toString() + "\"";
+//     //   // selectionsArr.push(previousSelection[p].objectID());
+//     //   if (p + 1 != previousSelection.count()) {
+//     //     selectionsArr += ",";
+//     //
+//     //   }
+//     // }
+//     //
+//     // selectionsArr += "]";
+//     // log()
+//     var selectionsArr1 = [];
+//
+//     for (var p = 0; p < previousSelection.count(); p++) {
+//       selectionsArr1.push(previousSelection[p].objectID().toString());
+//     }
+//
+//
+//     var previousSelectionsArr = mainThreadDict[kSelections];
+//
+//     var brains = [previousSelectionsArr arrayByAddingObject:selectionsArr1];
+//     log(brains);
+//
+//     mainThreadDict[kSelections] = brains;
+//     //mainThreadDict[kSelections].push(selectionsArr);
+//     // previousSelectionsArr.push(selectionsArr1);
+//     //
+//     //
+//     // mainThreadDict[kSelections] = previousSelectionsArr;
+//
+//     // var brains = JSON.parse(mainThreadDict[kSelections]);
+//     // log(brains);
+//     log(mainThreadDict[kSelections])
+//   }
+//
+// }
+
+
 @import 'lib/file-utils.js';
 @import 'lib/mainThread-utils.js';
 @import 'lib/settings-utils.js';

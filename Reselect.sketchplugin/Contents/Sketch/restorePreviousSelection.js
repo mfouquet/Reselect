@@ -1,7 +1,8 @@
 @import 'lib/file-utils.js';
-@import 'lib/mainThread-utils.js';
+// @import 'lib/mainThread-utils.js';
 @import 'lib/search-utils.js';
 @import 'lib/settings-utils.js';
+@import 'lib/threading.js';
 
 var restorePreviousSelection = function(context) {
 
@@ -11,7 +12,7 @@ var restorePreviousSelection = function(context) {
   var layers = [page children];
 
   // Get the array of previous selections
-  var vPreviousSelections = loadFromThreadDict(kReselectSelections];
+  var vPreviousSelections = mainThreadDict[kSelections];
 
   // Create a new array to house all of the previous selections
   // Have to do this because the array comes out as an object from the
