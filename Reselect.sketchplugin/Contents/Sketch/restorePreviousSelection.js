@@ -5,9 +5,6 @@
 
 var restorePreviousSelection = function(context) {
 
-  // Check for any plugin updates
-  checkForUpdates(context);
-
   // Get the currently selected layers and deselect them all
   var doc = context.document;
   var page = [doc currentPage];
@@ -34,28 +31,4 @@ var restorePreviousSelection = function(context) {
   // set hasRestored to true
   saveToThreadDict(kReselectSelections, selectionsArr);
   saveToThreadDict(kReselectHasRestored, JSON.stringify(true));
-}
-
-var checkForUpdates = function(context) {
-  var vCheckForUpdates = loadFromThreadDict(kReselectCheckForUpdates);
-
-  if (!vCheckForUpdates) {
-    loadSettingsFile(context);
-  }
-
-  if (vCheckForUpdates) {
-    if (checkForPluginUpdate(context) && isTodayNewDay()) {
-      var scriptPath = context.scriptPath;
-      var scriptFolder = [scriptPath stringByDeletingLastPathComponent];
-
-      // Alert the user there are no selections that exist for that document
-      var alert = NSAlert.alloc().init();
-      var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
-      alert.setIcon(icon);
-      alert.setMessageText("A new version of Reselect is available");
-      alert.setInformativeText("Download the new version at: https://github.com/mfouquet/Reselect");
-      alert.addButtonWithTitle("Ok");
-      alert.runModal();
-    }
-  }
 }
