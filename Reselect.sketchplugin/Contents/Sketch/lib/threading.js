@@ -1,8 +1,29 @@
-var mainThreadDict = NSThread.mainThread().threadDictionary();
-var kPluginDomain = "com.mfouquet.sketch.reselect";
-var kSelections = kPluginDomain + ".selections";
+// Figured out how to temp save items with help from tylergaw's Day Player
+// which is available here: https://github.com/tylergaw/day-player
 
-if (!mainThreadDict[kSelections]) {
-  log('create selection dictionary');
-  mainThreadDict[kSelections] = [];
+var mainThreadDict = NSThread.mainThread().threadDictionary();
+
+var kPluginDomain = "com.mfouquet.sketch.reselect"
+var kReselectSelections = kPluginDomain + ".selections";
+var kReselectHasRestored = kPluginDomain + ".hasRestored";
+var kReselectMaxRestoreCount = kPluginDomain + ".maxRestoreCount";
+
+if (!mainThreadDict[kReselectSelections]) {
+  mainThreadDict[kReselectSelections] = [];
+}
+
+if (!mainThreadDict[kReselectHasRestored]) {
+  mainThreadDict[kReselectHasRestored] = JSON.stringify(false);
+}
+
+if (!mainThreadDict[kReselectMaxRestoreCount]) {
+  mainThreadDict[kReselectMaxRestoreCount] = null;
+}
+
+var saveToThreadDict = function(threadKey, obj) {
+  mainThreadDict[threadKey] = obj;
+};
+
+var loadFromThreadDict = function(threadKey) {
+  return mainThreadDict[threadKey];
 }

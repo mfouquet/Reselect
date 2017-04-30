@@ -1,5 +1,5 @@
-@import 'lib/file-utils.js';
-@import 'lib/search-utils.js';
+@import 'lib/file.js';
+@import 'lib/search.js';
 
 var loadSelection = function(context) {
   var doc = context.document;

@@ -1,7 +1,4 @@
-@import 'lib/file-utils.js';
-// @import 'lib/mainThread-utils.js';
-@import 'lib/search-utils.js';
-@import 'lib/settings-utils.js';
+@import 'lib/search.js';
 @import 'lib/threading.js';
 
 var restorePreviousSelection = function(context) {
@@ -11,8 +8,7 @@ var restorePreviousSelection = function(context) {
   var page = [doc currentPage];
   var layers = [page children];
 
-  // Get the array of previous selections
-  var vPreviousSelections = mainThreadDict[kSelections];
+  var vPreviousSelections = mainThreadDict[kReselectSelections];
 
   // Create a new array to house all of the previous selections
   // Have to do this because the array comes out as an object from the
@@ -22,14 +18,9 @@ var restorePreviousSelection = function(context) {
     selectionsArr.push(vPreviousSelections[p]);
   }
 
-  // Get the last selection
   var lastSelection = selectionsArr.pop();
-
-  // Loop through the last selection and select the layer if there's a match
   selectLayersWithMatchingObjectIds(doc, lastSelection);
 
-  // Save the new array that should be short one now and
-  // set hasRestored to true
   saveToThreadDict(kReselectSelections, selectionsArr);
   saveToThreadDict(kReselectHasRestored, JSON.stringify(true));
 }

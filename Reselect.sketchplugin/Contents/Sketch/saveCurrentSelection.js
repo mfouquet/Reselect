@@ -1,12 +1,12 @@
-@import 'lib/file-utils.js';
+@import 'lib/file.js';
 
 var saveCurrentSelection = function(context) {
   var doc = context.document;
   var docId = doc.documentData().objectID();
   var currentSelection = context.selection;
 
-  var scriptPath = context.scriptPath
-  var scriptFolder = [scriptPath stringByDeletingLastPathComponent]
+  var scriptPath = context.scriptPath;
+  var scriptFolder = scriptPath.stringByDeletingLastPathComponent();
 
   // Create an array containing the objectID's of each selected item
   var currentSelectionArray = [];
@@ -36,8 +36,8 @@ var saveCurrentSelection = function(context) {
         // that the user would like to overwrite existing selection
         if (documentFile.selectionsArray[i].selectionName == selectionName) {
           var alert = NSAlert.alloc().init();
-          var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect-warning.icns');
-          alert.setIcon(icon);
+          // var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect-warning.icns');
+          // alert.setIcon(icon);
           alert.setMessageText("Warning");
           alert.setInformativeText("A selection with that name already exists for this document. Would you like to overwrite?");
           alert.addButtonWithTitle("Yes");

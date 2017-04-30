@@ -1,5 +1,5 @@
-@import 'lib/file-utils.js';
-@import 'lib/mainThread-utils.js';
+@import 'lib/file.js';
+@import 'lib/threading.js';
 
 var showSettings = function(context) {
 
@@ -44,8 +44,8 @@ var showSettings = function(context) {
 
   // Create the alert and attach the accessory view
   var alert = NSAlert.alloc().init();
-  var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
-  alert.setIcon(icon);
+  // var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
+  // alert.setIcon(icon);
   alert.addButtonWithTitle("Save");
   alert.addButtonWithTitle("Cancel");
   alert.setAccessoryView(accessoryView);

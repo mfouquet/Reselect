@@ -16,14 +16,6 @@ var jsonFromFile = function(filePath, mutable) {
   return [NSJSONSerialization JSONObjectWithData:data options:options error:nil];
 }
 
-function jsonFromUrl(url) {
-
-	var request = [NSURLRequest requestWithURL: [NSURL URLWithString:url]],
-		response = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil],
-		responseObj = [NSJSONSerialization JSONObjectWithData: response options: nil error: nil];
-	return responseObj;
-}
-
 var saveJsonToFile = function(jsonObj, filePath) {
     writeTextToFile(stringify(jsonObj), filePath);
 }
@@ -32,8 +24,4 @@ var stringify = function(obj, prettyPrinted) {
     var prettySetting = prettyPrinted ? NSJSONWritingPrettyPrinted : 0,
     jsonData = [NSJSONSerialization dataWithJSONObject:obj options:prettySetting error:nil];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-}
-
-var removeFileOrFolder = function(filePath) {
-    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
 }
