@@ -37,6 +37,12 @@
       "name" : "Load Selection"
     },
     {
+      "identifier" : "deleteSelection",
+      "script" : "deleteSelection.js",
+      "handler" : "deleteSelection",
+      "name" : "Delete Selection"
+    },
+    {
       "identifier" : "showSettings",
       "script" : "showSettings.js",
       "handler" : "showSettings",
@@ -51,6 +57,7 @@
       "saveCurrentSelection",
       "loadSelection",
       "-",
+      "deleteSelection",
       "showSettings"
     ]
   }

@@ -1,7 +1,7 @@
 @import 'lib/file.js';
 @import 'lib/search.js';
 
-var loadSelection = function(context) {
+var deleteSelection = function(context) {
   var sketch = context.api();
 
   var document = sketch.selectedDocument;
@@ -22,18 +22,24 @@ var loadSelection = function(context) {
     }
 
     // Record the index of the user's selected option
-    var choice = sketch.getSelectionFromUser("Choose a selection to load", options, 0);
+    var choice = sketch.getSelectionFromUser("Choose a selection to delete", options, 0);
 
     // Pull the selection array out that has all of the layers and then
-    // select them in the document
+    // delete it out of the document selection array
     var selectedIndex = choice[1];
-    var selectedSelection = documentFile.selectionsArray[selectedIndex].selection;
-    var selection = document.selectedLayers;
-    selection.clear();
+    var selectedSelection = documentFile.selectionsArray[selectedIndex];
+    var newDocumentArray = [];
 
-    for (var s = 0; s < selectedSelection.count(); s++) {
-      document.layerWithID(selectedSelection[s]).addToSelection();
+    for (var j = 0; j < documentFile.selectionsArray.count(); j++) {
+      if (selectedIndex != j) {
+        newDocumentArray.push(documentFile.selectionsArray[j]);
+      }
     }
+
+    documentFile.selectionsArray = newDocumentArray;
+    saveJsonToFile(documentFile, scriptFolder + '/selections/' + documentId + '.txt');
+    sketch.message("The selection, " + documentFile.selectionsArray[selectedIndex].selectionName
+      + ", has been deleted.")
 
   } else {
     sketch.alert("There are no selections saved for this document.", "Error");
