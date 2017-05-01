@@ -1,12 +1,12 @@
-@import 'lib/search.js';
 @import 'lib/threading.js';
 
 var restorePreviousSelection = function(context) {
+  var sketch = context.api();
 
   // Get the currently selected layers and deselect them all
-  var doc = context.document;
-  var page = [doc currentPage];
-  var layers = [page children];
+  var document = sketch.selectedDocument;
+  var selection = document.selectedLayers;
+  selection.clear();
 
   var vPreviousSelections = mainThreadDict[kReselectSelections];
 
@@ -19,7 +19,10 @@ var restorePreviousSelection = function(context) {
   }
 
   var lastSelection = selectionsArr.pop();
-  selectLayersWithMatchingObjectIds(doc, lastSelection);
+
+  for (var l = 0; l < lastSelection.count(); l++) {
+    document.layerWithID(lastSelection[l]).addToSelection();
+  }
 
   saveToThreadDict(kReselectSelections, selectionsArr);
   saveToThreadDict(kReselectHasRestored, JSON.stringify(true));
