@@ -1,68 +1,140 @@
+@import 'lib/nibui.js';
 @import 'lib/file.js';
+@import 'lib/settings.js';
 @import 'lib/threading.js';
 
+var COSCRIPT;
+
 var showSettings = function(context) {
+  // ====
+  // Prepare app and COSCRIPT
+  COSCRIPT = COScript.currentCOScript();
+  COSCRIPT.setShouldKeepAround(true);
 
-  // Load up the settings file
-  var scriptPath = context.scriptPath;
-  var scriptFolder = [scriptPath stringByDeletingLastPathComponent];
-  var settingsFile = jsonFromFile(scriptFolder + '/lib/settings.js', true);
+  var sharedApp = NSApplication.sharedApplication();
 
-  // Create an accessory view to hold all of our controls
-  var accessoryView = NSView.alloc().initWithFrame(NSMakeRect(0.0, 0.0, 260.0, 100.0))
+  // Determine if the plugin window is already open
+  var openWindow = false;
 
-  // Create a label for the max restore field
-  var maxRestoreLabel = NSTextField.alloc().initWithFrame(NSMakeRect(0.0, 67.5, 260.0, 20.0))
-  maxRestoreLabel.setEditable(false);
-  maxRestoreLabel.setBordered(false);
-  maxRestoreLabel.setDrawsBackground(false);
-  maxRestoreLabel.setStringValue("Max number of selections to restore:");
-  accessoryView.addSubview(maxRestoreLabel);
+  for (var i = 0; i < sharedApp.windows().count(); i++) {
+    var window = sharedApp.windows().objectAtIndex(i);
 
-  // Create a max restore field that captures how many selections the user
-  // wants to store
-  var maxRestoreField = NSTextField.alloc().initWithFrame(NSMakeRect(235.0, 70.0, 20.0, 20.0))
-  maxRestoreField.cell().setStringValue(settingsFile.maxRestoreCount);
-  accessoryView.addSubview(maxRestoreField);
-
-  // Create a label for the check for updates control
-  var checkForUpdatesLabel = NSTextField.alloc().initWithFrame(NSMakeRect(2.5, 20.0, 260.0, 20.0))
-  checkForUpdatesLabel.setEditable(false);
-  checkForUpdatesLabel.setBordered(false);
-  checkForUpdatesLabel.setDrawsBackground(false);
-  checkForUpdatesLabel.setStringValue("Auto check for updates?");
-  accessoryView.addSubview(checkForUpdatesLabel);
-
-  // Create a check for updates segmented control where the user can select
-  // whether they want to auto check for updates
-  var checkForUpdates = NSSegmentedControl.alloc().initWithFrame(NSMakeRect(175.0, 17.5, 100.0, 20.0))
-  checkForUpdates.segmentCount = 2;
-  checkForUpdates.setLabel_forSegment("No", 0);
-  checkForUpdates.setLabel_forSegment("Yes", 1);
-  checkForUpdates.setSelected_forSegment(true, settingsFile.checkForUpdates);
-  accessoryView.addSubview(checkForUpdates);
-
-  // Create the alert and attach the accessory view
-  var alert = NSAlert.alloc().init();
-  // var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect.icns');
-  // alert.setIcon(icon);
-  alert.addButtonWithTitle("Save");
-  alert.addButtonWithTitle("Cancel");
-  alert.setAccessoryView(accessoryView);
-  alert.setMessageText("Reselect Settings");
-
-  // Run the modal and capture the values
-  alert.runModal();
-
-  var settingsObject = {
-      maxRestoreCount: maxRestoreField.stringValue(),
-      checkForUpdates: checkForUpdates.isSelectedForSegment(1)
+    if (window.identifier() == 'reselectWindow') {
+      openWindow = true;
+      window.makeKeyAndOrderFront(null);
+    }
   }
 
-  // Save the new values to the settings file
-  saveJsonToFile(settingsObject, scriptFolder + '/lib/settings.js');
+  if (openWindow) {
+    return;
+  }
+
+
+  // ====
+  // Prepare the NIB so we can do stuff with the UI
+  const nibui = new NibUI(context, 'UIBundle', 'ReselectNibUITemplate', [
+    'mainWindow',
+    'textReselectAmount', 'btnUp', 'btnDown',
+    'btnSave',
+    'btnWebsite', 'btnHelp', 'btnVersion'
+  ]);
+
+
+  // ====
+  // Set up the window styling
+  nibui.mainWindow.setTitlebarAppearsTransparent(true);
+  nibui.mainWindow.standardWindowButton(NSWindowCloseButton).setHidden(false);
+  nibui.mainWindow.standardWindowButton(NSWindowMiniaturizeButton).setHidden(true);
+  nibui.mainWindow.standardWindowButton(NSWindowZoomButton).setHidden(true);
+
+
+  // ====
+  // Load up the settings file
+  loadSettingsFile(context);
+
+
+  // ====
+  // Prepare the UI
+  nibui.textReselectAmount.setStringValue("10");
+
+
+  // ====
+  // Attach an action to the Up Button
+  nibui.attachTargetAndAction(nibui.btnUp, function() {
+    updateReselectAmountTextbox("up", context, nibui);
+  });
+
+
+  // ====
+  // Attach an action to the Down Button
+  nibui.attachTargetAndAction(nibui.btnDown, function() {
+    updateReselectAmountTextbox("down", context, nibui);
+  });
+
+
+  // ====
+  // Attach an action to the Save Button
+  nibui.attachTargetAndAction(nibui.btnSave, function() {
+    saveReselectAmount(context, nibui);
+  });
+
+
+  // ====
+  // Attach an action to the Website Button
+  nibui.attachTargetAndAction(nibui.btnWebsite, function() {
+    NSWorkspace.sharedWorkspace()
+      .openURL(NSURL.URLWithString("http://www.reselect.co/"));
+  });
+
+
+  // ====
+  // Attach an action to the Help Button
+  nibui.attachTargetAndAction(nibui.btnHelp, function() {
+    NSWorkspace.sharedWorkspace()
+      .openURL(NSURL.URLWithString("http://www.reselect.co/#usage"));
+  });
+
+
+  // ====
+  // Attach an action to the Version Button
+  nibui.attachTargetAndAction(nibui.btnVersion, function() {
+    NSWorkspace.sharedWorkspace()
+      .openURL(NSURL.URLWithString("https://github.com/mfouquet/Reselect/blob/master/CHANGELOG.md"));
+  });
+
+
+  // ====
+  // Finish up UI work
+  nibui.mainWindow.makeKeyAndOrderFront(null);
+  nibui.mainWindow.setLevel(NSFloatingWindowLevel);
+  nibui.destroy();
+}
+
+
+function updateReselectAmountTextbox(direction, context, nibui) {
+  var reselectAmount = parseInt(nibui.textReselectAmount.stringValue());
+
+  if (direction == "up") {
+    reselectAmount++;
+  } else {
+    reselectAmount--;
+  }
+
+  nibui.textReselectAmount.setStringValue(reselectAmount.toString());
+}
+
+
+function saveReselectAmount(context, nibui) {
+  var settingsObject = {
+    maxReselectAmount: nibui.textReselectAmount.stringValue(),
+  }
+
+  var scriptPath = context.scriptPath;
+  var scriptFolder = scriptPath.stringByDeletingLastPathComponent();
+  scriptFolder = scriptFolder.stringByDeletingLastPathComponent();
+
+  saveJsonToFile(settingsObject, scriptFolder + '/Resources/settings.js');
 
   // Save the values to the main thread as well
-  saveToThreadDict(kReselectMaxRestoreCount, maxRestoreField.stringValue());
-  saveToThreadDict(kReselectCheckForUpdates, checkForUpdates.isSelectedForSegment(1));
-};
+  saveToThreadDict(kReselectMaxReselectAmount, nibui.textReselectAmount.stringValue());
+}

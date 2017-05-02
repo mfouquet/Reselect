@@ -1,1 +1,1 @@
-{"maxRestoreCount":"5"}
+{"maxReselectAmount":"10"}
