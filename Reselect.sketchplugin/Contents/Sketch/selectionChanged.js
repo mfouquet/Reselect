@@ -3,15 +3,15 @@
 @import 'lib/settings.js';
 
 var onSelectionChanged = function(context) {
-  var vPreviousSelections = loadFromThreadDict(kReselectSelections];
-  var vHasRestored = JSON.parse(loadFromThreadDict(kReselectHasRestored));
-  var vMaxRestoreCount = loadFromThreadDict(kReselectMaxRestoreCount);
+  var vPreviousSelections = loadFromThreadDict(kReselectSelections);
+  var vHasReselected = JSON.parse(loadFromThreadDict(kReselectHasReselected));
+  var vMaxReselectAmount = loadFromThreadDict(kReselectMaxReselectAmount);
 
-  if (!vMaxRestoreCount) {
+  if (!vMaxReselectAmount) {
     loadSettingsFile(context);
   }
 
-  if (!vHasRestored) {
+  if (!vHasReselected) {
     var previousSelection = context.actionContext.oldSelection;
 
     if (previousSelection.count() > 0) {
@@ -30,7 +30,7 @@ var onSelectionChanged = function(context) {
         previousSelectionArr.push(previousSelection[c].objectID());
       }
 
-      if (selectionsArr.length >= vMaxRestoreCount) {
+      if (selectionsArr.length >= vMaxReselectAmount) {
         selectionsArr.shift();
       }
 
@@ -40,6 +40,6 @@ var onSelectionChanged = function(context) {
   } else {
     // User has just restored a selection - reset hasRestored
     // in threadDictionary to false
-    saveToThreadDict(kReselectHasRestored, JSON.stringify(false));
+    saveToThreadDict(kReselectHasReselected, JSON.stringify(false));
   }
 };

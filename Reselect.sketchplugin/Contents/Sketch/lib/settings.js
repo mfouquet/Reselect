@@ -4,5 +4,5 @@ var loadSettingsFile = function(context) {
   scriptFolder = scriptFolder.stringByDeletingLastPathComponent();
   var settingsFile = jsonFromFile(scriptFolder + '/Resources/settings.js', true);
 
-  saveToThreadDict(kReselectMaxReselectAmount, settingsFile.maxRestoreCount);
+  saveToThreadDict(kReselectMaxReselectAmount, settingsFile.maxReselectAmount);
 }

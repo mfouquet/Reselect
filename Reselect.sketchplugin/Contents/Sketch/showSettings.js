@@ -6,8 +6,9 @@
 var COSCRIPT;
 
 var showSettings = function(context) {
+
   // ====
-  // Prepare app and COSCRIPT
+  // Prepare the COSCRIPT
   COSCRIPT = COScript.currentCOScript();
   COSCRIPT.setShouldKeepAround(true);
 
@@ -51,11 +52,12 @@ var showSettings = function(context) {
   // ====
   // Load up the settings file
   loadSettingsFile(context);
+  var vMaxReselectAmount = loadFromThreadDict(kReselectMaxReselectAmount);
 
 
   // ====
   // Prepare the UI
-  nibui.textReselectAmount.setStringValue("10");
+  nibui.textReselectAmount.setStringValue(parseInt(vMaxReselectAmount));
 
 
   // ====
@@ -125,8 +127,10 @@ function updateReselectAmountTextbox(direction, context, nibui) {
 
 
 function saveReselectAmount(context, nibui) {
+  var reselectAmount = nibui.textReselectAmount.stringValue();
+
   var settingsObject = {
-    maxReselectAmount: nibui.textReselectAmount.stringValue(),
+    maxReselectAmount: reselectAmount,
   }
 
   var scriptPath = context.scriptPath;
@@ -135,6 +139,6 @@ function saveReselectAmount(context, nibui) {
 
   saveJsonToFile(settingsObject, scriptFolder + '/Resources/settings.js');
 
-  // Save the values to the main thread as well
-  saveToThreadDict(kReselectMaxReselectAmount, nibui.textReselectAmount.stringValue());
+  // Save the value to the main thread as well
+  saveToThreadDict(kReselectMaxReselectAmount, reselectAmount);
 }
