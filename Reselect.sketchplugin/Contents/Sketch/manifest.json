@@ -21,12 +21,16 @@
       "script" : "restorePreviousSelection.js",
       "handler" : "restorePreviousSelection",
       "shortcut" : "ctrl alt \\",
-      "name" : "Restore Previous Selection"
+      "description" : "Reselects your previous selection.",
+      "icon" : "icons/reselect.png",
+      "name" : "Reselect Previous"
     },
     {
       "identifier" : "saveCurrentSelection",
       "script" : "saveCurrentSelection.js",
       "handler" : "saveCurrentSelection",
+      "description" : "Save your current selection for access later.",
+      "icon" : "icons/save.png",
       "name" : "Save Current Selection"
     },
     {
@@ -34,18 +38,24 @@
       "script" : "loadSelection.js",
       "handler" : "loadSelection",
       "shortcut" : "ctrl alt ]",
+      "description" : "Load a selection for the current document.",
+      "icon" : "icons/load.png",
       "name" : "Load Selection"
     },
     {
       "identifier" : "deleteSelection",
       "script" : "deleteSelection.js",
       "handler" : "deleteSelection",
+      "description" : "Delete a saved selection from the current document.",
+      "icon" : "icons/delete.png",
       "name" : "Delete Selection"
     },
     {
       "identifier" : "showSettings",
       "script" : "showSettings.js",
       "handler" : "showSettings",
+      "description" : "Change your max selections stored and learn more about Reselect.",
+      "icon" : "icons/settings.png",
       "name" : "Settings"
     }
   ],
