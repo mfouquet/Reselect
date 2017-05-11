@@ -11,50 +11,42 @@
   </head>
   <body>
     <div class="page-wrap">
+      <nav class="nav">
+        <div class="nav-item">Home</div>
+        <div class="nav-item">Installation</div>
+        <div class="nav-item">Usage</div>
+      </nav>
+      <section id="home" class="section home">
+        <div class="home__logo"></div>
+        <div class="home__text">A Sketch plugin that restores a previous selection or saves a selection for later use.</div>
+        <button class="home__download">Download</button>
+        <div class="home__github-info">
+          <div class="home__version">v2.0</div>
+          <div class="home__bug">File a bug</div>
+        </div>
+      </section>
 
-
-      <header id="header" class="header">
-        <h1 class="header__title">Reselect</h1>
-        <h4 class="header__subtitle">
-          <span>Another</span>
-          <span>
-            <svg viewBox="78 0 24 22" class="header__subtitle-icon">
-                <defs></defs>
-                <g id="sketch-symbol" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(78.000000, 0.000000)">
-                    <g id="Group" fill-rule="nonzero">
-                        <polygon id="Shape" fill="#FDB300" points="5.22580648 0.713354847 11.9758065 0 18.7258065 0.713354847 23.9516129 7.72599569 11.9758065 21.6666421 0 7.72599569"></polygon>
-                        <g transform="translate(0.000000, 7.725996)" id="Shape">
-                            <polygon fill="#EA6C00" points="4.85080203 0 11.9758173 13.940651 0 0"></polygon>
-                            <polygon fill="#EA6C00" transform="translate(17.963693, 6.970325) scale(-1, 1) translate(-17.963693, -6.970325) " points="16.8265869 0 23.9516021 13.940651 11.9757849 0"></polygon>
-                            <polygon fill="#FDAD00" points="4.85080203 0 19.1008325 0 11.9758173 13.940651"></polygon>
-                        </g>
-                        <g id="Shape">
-                            <polygon fill="#FDD231" points="11.9758173 0 5.2257868 0.713345415 4.85080203 7.72599058"></polygon>
-                            <polygon fill="#FDD231" transform="translate(15.538288, 3.862995) scale(-1, 1) translate(-15.538288, -3.862995) " points="19.1007957 0 12.3507652 0.713345415 11.9757805 7.72599058"></polygon>
-                            <polygon fill="#FDAD00" transform="translate(21.338709, 4.219668) scale(-1, 1) translate(-21.338709, -4.219668) " points="18.7257849 7.72599058 23.9516326 0.713345415 23.5765869 7.72599058"></polygon>
-                            <polygon fill="#FDAD00" points="0 7.72599058 5.2257868 0.713345415 4.85080203 7.72599058"></polygon>
-                            <polygon fill="#FEEEB7" points="11.9758173 0 4.85080203 7.72599058 19.1008325 7.72599058"></polygon>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-          </span>
-          <span>Plugin</span>
-        </h4>
-        <div class="header__divider"></div>
-      </header>
+      <section id="installation" class="section installation">
+        <div class="installation__container">
+          <h1 class="installation__header">
+            Recommended
+          </h1>
+          <div class="installation__text">Search for Reselect using one of the following:</div>
+          <ul class="installation__list">
+            <li>Sketch Runner
+            <li>Sketchpacks
+            <li>Sketch Toolbox
+          </ul>
+        </div>
+        <div class="installation__container">
+          <h1 class="installation__header">
+            Old-Fashioned
+          </h1>
+        </div>
+      </section>
 
 
       <footer id="footer" class="footer">
-        <div class="footer__integrations">
-          <a href="http://bit.ly/SketchRunnerWebsite">
-            <img width="160" height="41" src="http://bit.ly/RunnerBadgeBlue" />
-          </a>
-          <a href="https://sketchpacks.com/mfouquet/reselect/install">
-            <img width="160" height="41" src="http://sketchpacks-com.s3.amazonaws.com/assets/badges/sketchpacks-badge-install.png" />
-          </a>
-        </div>
-        <div class="footer__divider"></div>
         <p class="footer__text">Made approximately halfway between the 🌖 and the 🌍 by <a href="https://twitter.com/_fookay" class="footer__link">@_fookay</a>.</p>
 
         <p class="footer__text">Problems and suggestions go in the <a href="https://github.com/mfouquet/reselect" class="footer__link">GitHub repo</a>.</p>
@@ -62,7 +54,6 @@
         <p class="footer__text">© 2017 Michael Fouquet</p>
       </footer>
       <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-      <script src="dist/quotes.js"></script>
       <script src="dist/main.js"></script>
   </body>
 </html>
