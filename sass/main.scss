@@ -9,12 +9,472 @@ html {
   width: 100%;
   margin: 0;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
 }
 
+
+
 .page-wrap {
-  
+  background: url(../img/website-bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3rem;
+  padding-right: 3rem;
+  color: white;
+
+  @media (max-width: 639px) {
+    justify-content: center;
+    padding-top: 2rem;
+    padding-right: 0;
+  }
+}
+
+  .nav-item:nth-child(2) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .nav-item {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0);
+    transition: background .2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .nav-item--active {
+    background: white;
+    color: black;
+    font-weight: 700;
+
+    &:hover {
+      background: white;
+    }
+  }
+
+
+
+.content-wrap {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 96px);
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+
+
+.section {
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+
+
+
+.key {
+  display: inline-block;
+  padding: .125rem .25rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: black;
+  vertical-align: middle;
+  background-color: white;
+  border: solid 1px #ccc;
+  border-bottom-color: #b3b3b3;
+  border-radius: .25rem;
+  box-shadow: inset 0 -1px 0 #b3b3b3;
+  transform-style: preserve-3d;
+  transition: all .15s;
+  padding: 0.5rem;
+}
+
+
+
+.home {
+  text-align: center;
+  opacity: 0;
+
+  &.u-show--block {
+    animation-duration: 0.4s;
+    animation-name: fadein;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+  .home__logo {
+    padding-bottom: 5.75rem;
+
+    img {
+      width: 121px;
+      margin-left: -2rem;
+    }
+  }
+
+  .home__text {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    line-height: 1.2;
+  }
+
+  .home__download {
+    background-color: white;
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 0.25rem;
+    border: none;
+    color: black;
+    margin-top: 6.25rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transform-style: preserve-3d;
+    transition: all 0.25s;
+    box-shadow: inset 0 -4px 0 #D8D8D8;
+
+    &::before {
+      content: '';
+      width: 100%;
+      background-color: #D8D8D8;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  .home__github-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    max-width: 102px;
+    margin: 0 auto;
+  }
+
+  .home__version,
+  .home__bug {
+    display: block;
+    position: relative;
+    color: white;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+      height: 1px;
+      content: '';
+      transition: all .2s ease-in-out;
+      display: block;
+      background: transparent;
+      position: absolute;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      &::after{
+        background: white;
+      }
+    }
+  }
+
+
+
+.installation {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  width: 100%;
+
+  @media (min-width: 639px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1149px) {
+    width: initial;
+  }
+}
+
+  .installation__container {
+    background: white;
+    color: black;
+    width: 50%;
+    opacity: 0;
+
+    @media (max-width: 639px) {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    @media (min-width: 1149px) {
+      width: 512px;
+    }
+
+    &:first-child {
+      .u-show & {
+        animation-duration: 0.4s;
+        animation-name: fadein;
+        animation-delay: 0.2s;
+        animation-fill-mode: forwards;
+      }
+
+      @media (min-width: 639px) {
+        margin-right: 1rem;
+      }
+
+      @media (min-width: 1149px) {
+        margin-right: 2rem;
+      }
+    }
+
+    &:last-child {
+      .u-show & {
+        animation-duration: 0.4s;
+        animation-name: fadein;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+      }
+
+      @media (min-width: 639px) {
+        margin-left: 1rem;
+      }
+
+      @media (min-width: 1149px) {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .installation__header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .installation__text {
+    padding: 2rem 4rem;
+    text-align: center;
+    line-height: 1.2;
+
+    a {
+      color: black;
+
+      &:hover {
+        color: #666666;
+      }
+    }
+  }
+
+  .installation__list {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 2rem;
+    text-align: center;
+
+    li {
+      padding-bottom: 2rem;
+    }
+
+    a {
+      color: black;
+
+      &:hover {
+        color: #666666;
+      }
+    }
+  }
+
+
+
+.usage {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  width: 100%;
+
+  @media (min-width: 639px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1149px) {
+    width: initial;
+  }
+}
+
+  .usage__container {
+    background: white;
+    color: black;
+    text-align: center;
+    padding-bottom: 2rem;
+    width: 50%;
+    opacity: 0;
+
+    @media (max-width: 639px) {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    @media (min-width: 1149px) {
+      width: 512px;
+    }
+
+    &:first-child {
+      .u-show & {
+        animation-duration: 0.4s;
+        animation-name: fadein;
+        animation-delay: 0.2s;
+        animation-fill-mode: forwards;
+      }
+
+      @media (min-width: 639px) {
+        margin-right: 1rem;
+      }
+
+      @media (min-width: 1149px) {
+        margin-right: 2rem;
+      }
+    }
+
+    &:last-child {
+      .u-show & {
+        animation-duration: 0.4s;
+        animation-name: fadein;
+        animation-delay: 0.4s;
+        animation-fill-mode: forwards;
+      }
+
+      @media (min-width: 639px) {
+        margin-left: 1rem;
+      }
+
+      @media (min-width: 1149px) {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .usage__header {
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  .usage__text {
+    padding: 2rem 4rem;
+    line-height: 1.2;
+  }
+
+  .usage__shortcut {
+    padding-bottom: 2rem;
+  }
+
+
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+  .footer__integrations {
+    a {
+      text-decoration: none;
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    img {
+      transform-style: preserve-3d;
+      transition: all 0.25s;
+
+      &:first-child {
+        margin-right: 24px;
+      }
+      &:last-child {
+        margin-left: 24px;
+      }
+    }
+  }
+
+  .footer__divider {
+    width: 100%;
+    max-width: 28rem;
+    height: 1px;
+    background-color: #b3b3b3;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer__text:not(:last-child) {
+    padding-bottom: 1rem;
+  }
+
+  .footer__text {
+    font-size: .75rem;
+
+    a {
+      color: black;
+
+      &:hover {
+        color: #666666;
+      }
+    }
+  }
+
+
+
+.u-show {
+  display: flex;
+}
+
+.u-show--block {
+  display: block;
+}
+
+.u-hide {
+  display: none;
+}
+
+
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

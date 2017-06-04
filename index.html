@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>Reselect</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="dist/main.css">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
@@ -12,48 +13,90 @@
   <body>
     <div class="page-wrap">
       <nav class="nav">
-        <div class="nav-item">Home</div>
-        <div class="nav-item">Installation</div>
-        <div class="nav-item">Usage</div>
+        <a id="nav-home" class="nav-item nav-item--active">Home</a>
+        <a id="nav-installation" class="nav-item">Installation</a>
+        <a id="nav-usage" class="nav-item">Usage</a>
       </nav>
-      <section id="home" class="section home">
-        <div class="home__logo"></div>
-        <div class="home__text">A Sketch plugin that restores a previous selection or saves a selection for later use.</div>
-        <button class="home__download">Download</button>
-        <div class="home__github-info">
-          <div class="home__version">v2.0</div>
-          <div class="home__bug">File a bug</div>
-        </div>
-      </section>
+      <div class="content-wrap">
+        <section id="home" class="section home u-show--block">
+          <div class="home__logo"><img src="img/logo.png" alt="logo" /></div>
+          <div class="home__text">A Sketch plugin that restores a previous selection or saves a selection for later use.</div>
+          <button id="download" class="home__download">Download</button>
+          <div class="home__github-info">
+            <a class="home__version" href="https://github.com/mfouquet/Reselect/releases" target="_blank">v2.0</a>
+            <a class="home__bug" href="https://github.com/mfouquet/reselect/issues" target="_blank">File a bug</a>
+          </div>
+        </section>
 
-      <section id="installation" class="section installation">
-        <div class="installation__container">
-          <h1 class="installation__header">
-            Recommended
-          </h1>
-          <div class="installation__text">Search for Reselect using one of the following:</div>
-          <ul class="installation__list">
-            <li>Sketch Runner
-            <li>Sketchpacks
-            <li>Sketch Toolbox
-          </ul>
-        </div>
-        <div class="installation__container">
-          <h1 class="installation__header">
-            Old-Fashioned
-          </h1>
-        </div>
-      </section>
+        <section id="installation" class="section installation u-hide">
+          <div class="installation__container">
+            <h1 class="installation__header">
+              Recommended
+            </h1>
+            <div class="installation__text">Search for Reselect using one of the following:</div>
+            <ul class="installation__list">
+              <li><a href="http://sketchrunner.com/" target="_blank">Sketch Runner</a>
+              <li><a href="https://sketchpacks.com/" target="_blank">Sketchpacks</a>
+              <li><a href="http://sketchtoolbox.com/" target="_blank">Sketch Toolbox</a>
+            </ul>
+          </div>
+          <div class="installation__container">
+            <h1 class="installation__header">
+              Old-Fashioned
+            </h1>
+            <div class="installation__text">Download <a href="https://github.com/mfouquet/Reselect/archive/master.zip">this file</a> and double click to install.</div>
+          </div>
+        </section>
 
+        <section id="usage" class="section usage u-hide">
+          <div class="usage__container">
+            <h1 class="usage__header">
+              Reselect Previous
+            </h1>
+            <div class="usage__text">Reselects your previous selection.</div>
+            <div class="usage__shortcut">
+              <span class="key">ctrl</span> + <span class="key">option</span> + <span class="key">\</span>
+            </div>
 
-      <footer id="footer" class="footer">
-        <p class="footer__text">Made approximately halfway between the 🌖 and the 🌍 by <a href="https://twitter.com/_fookay" class="footer__link">@_fookay</a>.</p>
+            <h1 class="usage__header">
+              Save Selection
+            </h1>
+            <div class="usage__text">Name and save your current selection for later use.</div>
+          </div>
+          <div class="usage__container">
+            <h1 class="usage__header">
+              Load Selection
+            </h1>
+            <div class="usage__text">Load a previously saved selection.</div>
+            <div class="usage__shortcut">
+              <span class="key">ctrl</span> + <span class="key">option</span> + <span class="key">]</span>
+            </div>
 
-        <p class="footer__text">Problems and suggestions go in the <a href="https://github.com/mfouquet/reselect" class="footer__link">GitHub repo</a>.</p>
+            <h1 class="usage__header">
+              Delete Selection
+            </h1>
+            <div class="usage__text">Delete a previously saved selection.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <footer id="footer" class="footer">
+      <div class="footer__integrations">
+        <a href="http://bit.ly/SketchRunnerWebsite">
+          <img width="160" height="41" src="http://bit.ly/RunnerBadgeBlue" />
+        </a>
+        <a href="https://sketchpacks.com/mfouquet/reselect/install">
+          <img width="160" height="41" src="http://sketchpacks-com.s3.amazonaws.com/assets/badges/sketchpacks-badge-install.png" />
+        </a>
+      </div>
+      <div class="footer__divider"></div>
+      <p class="footer__text">Made approximately halfway between the 🌖 and the 🌍 by <a href="https://twitter.com/_fookay" class="footer__link">@_fookay</a>.</p>
 
-        <p class="footer__text">© 2017 Michael Fouquet</p>
-      </footer>
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-      <script src="dist/main.js"></script>
+      <p class="footer__text">Problems and suggestions go in the <a href="https://github.com/mfouquet/reselect" class="footer__link">GitHub repo</a>.</p>
+
+      <p class="footer__text">© 2017 Michael Fouquet</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
