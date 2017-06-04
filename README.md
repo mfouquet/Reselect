@@ -1,37 +1,35 @@
-![](http://i.imgur.com/BhqCnE3.png)
+![Reselect Banner](https://raw.githubusercontent.com/mfouquet/reselect/master/banner.png)
 
 # Reselect
 
-![](https://img.shields.io/badge/minimum%20req%20Sketch%20vers-3.8-orange.svg)
-
-Ever deselect when you didn't mean to? Wish you could save a tricky selection that you're doing over and over? 
+Ever deselect when you didn't mean to? Wish you could save a tricky selection that you're doing over and over?
 
 Reselect allows you to restore a previous selection or save selections for later use (even after you close the document!).
 
 If you want to read more about it, check out this [Medium post](https://medium.com/@_fookay/reselect-sketch-plugin-d6ede304883d).
 
 
-##Installation
+## Installation
 
 1. Download the plugin and double-click to install.
 
 
-##Usage
+## Usage
 
-####Restore a Selection
+#### Restore a Selection
 - Navigate to `Plugins` > `Reselect` > `Restore Previous Selection`.
-- Hit `ctrl` + `alt` + `\` on your keyboard.
+- Hit <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>\</kbd> on your keyboard.
 
-###Save a Selection
+### Save a Selection
 - Navigate to `Plugins` > `Reselect` > `Save Current Selection`.
 - Provide a name for the selection and hit `Save`.
 
-###Load a Selection
+### Load a Selection
 - Navigate to `Plugins` > `Reselect` > `Load Selection`.
-- Hit `ctrl` + `alt` + `]` on your keyboard.
+- Hit <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>]</kbd> on your keyboard.
 - Select a selection from the dropdown and hit `Ok`.
 
-###Settings
+### Settings
 - Navigate to `Plugins` > `Reselect` > `Settings`.
 - Change the maximum number of selection restores allow - best to keep this < 20.
 - Select whether you want the plugin to auto check for updates.
