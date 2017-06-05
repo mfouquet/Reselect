@@ -18,7 +18,7 @@ If you want to read more about it, check out this [Medium post](https://medium.c
 
 #### Restore a Selection
 - Navigate to `Plugins` > `Reselect` > `Restore Previous Selection`.
-- Hit <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>\</kbd> on your keyboard.
+- Hit <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>\\</kbd> on your keyboard.
 
 ### Save a Selection
 - Navigate to `Plugins` > `Reselect` > `Save Current Selection`.
