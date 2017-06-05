@@ -1,28 +1,30 @@
-@import 'lib/file-utils.js';
+@import 'lib/file.js';
 
 var saveCurrentSelection = function(context) {
-  var doc = context.document;
-  var docId = doc.documentData().objectID();
-  var currentSelection = context.selection;
+  var sketch = context.api();
+  var document = sketch.selectedDocument;
+  var documentId = document.sketchObject.documentData().objectID();
+  var currentSelection = document.selectedLayers;
 
-  var scriptPath = context.scriptPath
-  var scriptFolder = [scriptPath stringByDeletingLastPathComponent]
+  var scriptPath = context.scriptPath;
+  var scriptFolder = scriptPath.stringByDeletingLastPathComponent();
 
   // Create an array containing the objectID's of each selected item
   var currentSelectionArray = [];
-  for (var i = 0; i < currentSelection.count(); i++) {
-    currentSelectionArray.push(currentSelection.objectAtIndex(i).objectID());
-  }
+
+  currentSelection.iterate(function(item) {
+    currentSelectionArray.push(item.id);
+  });
 
   // Determine what the user would like to name the current selection
-  var numOfLayers = (currentSelection.count() > 1) ? " layers" : " layer"
-  var selectionName = [doc askForUserInput: "Enter a name for this selection" initialValue: currentSelection.count() + numOfLayers]
+  var numOfLayers = (currentSelection.length > 1) ? " layers" : " layer"
+  var selectionName = sketch.getStringFromUser("Enter a name for this selection", currentSelection.length + numOfLayers);
 
   // If they provide a selection name, continue on to saving the selection
   if (selectionName) {
 
     // Pull the document's selection file, if it exists
-    var documentFile = jsonFromFile(scriptFolder + '/selections/' + docId + '.txt', true);
+    var documentFile = jsonFromFile(scriptFolder + '/selections/' + documentId + '.txt', true);
 
     // Create an array that will house each of the existing selection objects
     // in the document's selection file
@@ -36,8 +38,6 @@ var saveCurrentSelection = function(context) {
         // that the user would like to overwrite existing selection
         if (documentFile.selectionsArray[i].selectionName == selectionName) {
           var alert = NSAlert.alloc().init();
-          var icon = NSImage.alloc().initByReferencingFile(scriptFolder + '/lib/icons/reselect-warning.icns');
-          alert.setIcon(icon);
           alert.setMessageText("Warning");
           alert.setInformativeText("A selection with that name already exists for this document. Would you like to overwrite?");
           alert.addButtonWithTitle("Yes");
@@ -56,7 +56,7 @@ var saveCurrentSelection = function(context) {
     } else {
       // No document file exists? Create a new document file object
       documentFile = {
-        selectionsArray: [ ]
+        selectionsArray: []
       }
     }
 
@@ -72,6 +72,6 @@ var saveCurrentSelection = function(context) {
     selectionsArray.push(selection);
     documentFile.selectionsArray = selectionsArray;
 
-    saveJsonToFile(documentFile, scriptFolder + '/selections/' + docId + '.txt');
+    saveJsonToFile(documentFile, scriptFolder + '/selections/' + documentId + '.txt');
   }
 }

@@ -1,49 +1,66 @@
 {
-  "name": "Reselect",
-  "description": "Restore a previous selection or save selections for later use.",
-  "author": "Michael Fouquet",
-  "authorEmail": "michael.fouquet@me.com",
-  "homepage": "https://github.com/mfouquet/reselect",
-  "version": "1.0",
-  "compatibleVersion": 3,
-  "identifier": "com.mfouquet.sketch.reselect",
+  "name" : "Reselect",
+  "description" : "Restore a previous selection or save selections for later use.",
+  "version" : "2.0.0",
+  "identifier" : "com.mfouquet.sketch.reselect",
+  "author ": "Michael Fouquet",
+  "authorEmail" : "michael.fouquet@me.com",
+  "appcast" : "https://raw.githubusercontent.com/mfouquet/Reselect/master/appcast.xml",
+  "compatibleVersion" : 4.1,
+  "bundleVersion" : 1,
   "commands" : [
     {
-      "script" : "selectionChanged.cocoascript",
+      "script" : "selectionChanged.js",
       "handlers" : {
         "actions" : {
-          "SelectionChanged.finish" : "onSelectionChanged",
+          "SelectionChanged.finish" : "onSelectionChanged"
         }
       }
     },
     {
       "identifier" : "restorePreviousSelection",
-      "script" : "restorePreviousSelection.cocoascript",
+      "script" : "restorePreviousSelection.js",
       "handler" : "restorePreviousSelection",
       "shortcut" : "ctrl alt \\",
-      "name": "Restore Previous Selection"
+      "description" : "Reselects your previous selection.",
+      "icon" : "icons/reselect.png",
+      "name" : "Reselect Previous"
     },
     {
       "identifier" : "saveCurrentSelection",
-      "script" : "saveCurrentSelection.cocoascript",
+      "script" : "saveCurrentSelection.js",
       "handler" : "saveCurrentSelection",
-      "name": "Save Current Selection"
+      "description" : "Save your current selection for access later.",
+      "icon" : "icons/save.png",
+      "name" : "Save Current Selection"
     },
     {
       "identifier" : "loadSelection",
-      "script" : "loadSelection.cocoascript",
+      "script" : "loadSelection.js",
       "handler" : "loadSelection",
       "shortcut" : "ctrl alt ]",
-      "name": "Load Selection"
+      "description" : "Load a selection for the current document.",
+      "icon" : "icons/load.png",
+      "name" : "Load Selection"
+    },
+    {
+      "identifier" : "deleteSelection",
+      "script" : "deleteSelection.js",
+      "handler" : "deleteSelection",
+      "description" : "Delete a saved selection from the current document.",
+      "icon" : "icons/delete.png",
+      "name" : "Delete Selection"
     },
     {
       "identifier" : "showSettings",
-      "script" : "showSettings.cocoascript",
+      "script" : "showSettings.js",
       "handler" : "showSettings",
-      "name": "Settings"
-    },
+      "description" : "Change your max selections stored and learn more about Reselect.",
+      "icon" : "icons/settings.png",
+      "name" : "Settings"
+    }
   ],
-  "menu": {
+  "menu" : {
     "title" : "Reselect",
     "items" : [
       "restorePreviousSelection",
@@ -51,6 +68,7 @@
       "saveCurrentSelection",
       "loadSelection",
       "-",
+      "deleteSelection",
       "showSettings"
     ]
   }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Reselect</title>
+    <link>https://raw.githubusercontent.com/mfouquet/Reselect/master/appcast.xml</link>
+    <description>Quickly reselect a previous selection and save selections for later use.</description>
+    <language>en</language>
+      <item>
+        <title>Version 2.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>New UI.</li>
+              <li>Add ability to delete selections.</li>
+              <li>Bug fixes and performance improvements.</li>
+            </ul>
+          ]]>
+        </description>
+        <pubDate>Sun, 04 Mar 2017 11:49:11 +0000</pubDate>
+        <enclosure url="https://github.com/mfouquet/Reselect/archive/v2.0.0.zip" sparkle:version="2.0" type="application/octet-stream" />
+      </item>
+        <title>Version 1.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>First release.</li>
+            </ul>
+          ]]>
+        </description>
+        <pubDate>Sun, 04 Mar 2017 11:58:00 +0000</pubDate>
+        <enclosure url="https://github.com/mfouquet/Reselect/archive/v1.0.0.zip" sparkle:version="1.0" type="application/octet-stream" />
+      </item>
+  </channel>
+</rss>

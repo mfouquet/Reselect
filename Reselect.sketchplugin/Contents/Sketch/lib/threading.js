@@ -5,25 +5,19 @@ var mainThreadDict = NSThread.mainThread().threadDictionary();
 
 var kPluginDomain = "com.mfouquet.sketch.reselect"
 var kReselectSelections = kPluginDomain + ".selections";
-var kReselectHasRestored = kPluginDomain + ".hasRestored";
-var kReselectMaxRestoreCount = kPluginDomain + ".maxRestoreCount";
-var kReselectCheckForUpdates = kPluginDomain + ".checkForUpdates";
-var kReselectLastUpdateCheck = kPluginDomain + ".lastUpdateCheck";
+var kReselectHasReselected = kPluginDomain + ".hasReselected";
+var kReselectMaxReselectAmount = kPluginDomain + ".maxReselectAmount";
 
 if (!mainThreadDict[kReselectSelections]) {
   mainThreadDict[kReselectSelections] = [];
 }
 
-if (!mainThreadDict[kReselectHasRestored]) {
-  mainThreadDict[kReselectHasRestored] = JSON.stringify(false);
+if (!mainThreadDict[kReselectHasReselected]) {
+  mainThreadDict[kReselectHasReselected] = JSON.stringify(false);
 }
 
-if (!mainThreadDict[kReselectMaxRestoreCount]) {
-  mainThreadDict[kReselectMaxRestoreCount] = null;
-}
-
-if (!mainThreadDict[kReselectCheckForUpdates]) {
-  mainThreadDict[kReselectCheckForUpdates] = null;
+if (!mainThreadDict[kReselectMaxReselectAmount]) {
+  mainThreadDict[kReselectMaxReselectAmount] = null;
 }
 
 var saveToThreadDict = function(threadKey, obj) {
