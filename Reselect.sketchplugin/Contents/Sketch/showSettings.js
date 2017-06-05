@@ -93,7 +93,7 @@ var showSettings = function(context) {
   // Attach an action to the Help Button
   nibui.attachTargetAndAction(nibui.btnHelp, function() {
     NSWorkspace.sharedWorkspace()
-      .openURL(NSURL.URLWithString("http://www.reselect.co/#usage"));
+      .openURL(NSURL.URLWithString("http://www.reselect.co/"));
   });
 
 
@@ -101,7 +101,7 @@ var showSettings = function(context) {
   // Attach an action to the Version Button
   nibui.attachTargetAndAction(nibui.btnVersion, function() {
     NSWorkspace.sharedWorkspace()
-      .openURL(NSURL.URLWithString("https://github.com/mfouquet/Reselect/blob/master/CHANGELOG.md"));
+      .openURL(NSURL.URLWithString("https://github.com/mfouquet/Reselect/releases"));
   });
 
 
