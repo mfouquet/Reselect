@@ -120,7 +120,7 @@ affect performance</string>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yev-fH-VsA">
-                        <rect key="frame" x="219" y="20" width="20" height="14"/>
+                        <rect key="frame" x="219" y="21" width="28" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="version-button" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QXY-OR-fZf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -148,7 +148,7 @@ affect performance</string>
         <image name="logo" width="192" height="162"/>
         <image name="save-button" width="352" height="88"/>
         <image name="up-button" width="12" height="12"/>
-        <image name="version-button" width="40" height="22"/>
+        <image name="version-button" width="54" height="22"/>
         <image name="website-button" width="84" height="22"/>
     </resources>
 </document>
