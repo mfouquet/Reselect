@@ -1,4 +1,4 @@
-![Reselect Banner](https://raw.githubusercontent.com/mfouquet/reselect/master/banner.png)
+![Reselect Banner](/banner.png)
 
 # Reselect
 

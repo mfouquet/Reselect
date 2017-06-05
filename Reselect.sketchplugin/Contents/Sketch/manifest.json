@@ -5,6 +5,7 @@
   "identifier" : "com.mfouquet.sketch.reselect",
   "author ": "Michael Fouquet",
   "authorEmail" : "michael.fouquet@me.com",
+  "appcast" : "https://raw.githubusercontent.com/mfouquet/Reselect/master/appcast.xml",
   "compatibleVersion" : 4.1,
   "bundleVersion" : 1,
   "commands" : [
