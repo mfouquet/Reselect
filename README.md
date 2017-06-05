@@ -32,7 +32,6 @@ If you want to read more about it, check out this [Medium post](https://medium.c
 ### Settings
 - Navigate to `Plugins` > `Reselect` > `Settings`.
 - Change the maximum number of selection restores allow - best to keep this < 20.
-- Select whether you want the plugin to auto check for updates.
 
 
 # Problems?
