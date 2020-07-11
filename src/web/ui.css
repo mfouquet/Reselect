@@ -1,0 +1,137 @@
+html,
+body {
+  background-color: #1d2d44;
+  font-family: system-ui;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+}
+
+.dialog {
+  padding: 24px;
+}
+
+.dismiss {
+  color: rgba(237, 242, 244, 0.75);
+  position: absolute;
+  top: 4px;
+  transition: color 0.15s ease-in-out;
+  right: 8px;
+}
+
+.dismiss:focus,
+.dismiss:hover {
+  color: rgba(237, 242, 244, 1);
+  cursor: pointer;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: none;
+  color: rgba(237, 242, 244, 0.75);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  margin: 0;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  vertical-align: middle;
+  -webkit-appearance: none;
+}
+
+button:not(.button--save):focus,
+button:not(.button--save):hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(237, 242, 244, 1);
+}
+
+.button--save {
+  background-color: #8acd4f;
+  color: rgba(29, 45, 68, 1);
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  margin-top: 48px;
+  padding: 8px;
+  transition: transform 0.15s ease-in-out;
+  width: 168px;
+}
+
+.button--save:focus,
+.button--save:hover {
+  transform: scale(1.05);
+}
+
+.button--save:active {
+  transform: scale(0.99);
+}
+
+.separator {
+  color: rgba(237, 242, 244, 0.75);
+  margin-top: -4px;
+  padding: 0 8px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.row {
+  width: 216px;
+  padding-right: 28px;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+label {
+  color: rgba(237, 242, 244, 1);
+  font-size: 24px;
+  font-weight: 900;
+  margin-right: 16px;
+}
+
+input {
+  background-color: rgba(237, 242, 244, 1);
+  border: 0;
+  border-radius: 2px;
+  color: rgba(29, 45, 68, 1);
+  font-size: 24px;
+  font-weight: 700;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 64px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.divider {
+  background-color: rgba(237, 242, 244, 0.25);
+  height: 1px;
+  margin: 24px 0;
+  width: 216px;
+}

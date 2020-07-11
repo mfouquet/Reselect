@@ -71,8 +71,5 @@
       "deleteSelection",
       "showSettings"
     ]
-  },
-  "homepage": "http://www.reselect.co",
-  "disableCocoaScriptPreprocessor": true,
-  "author": "Michael Fouquet"
+  }
 }
