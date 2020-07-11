@@ -2,9 +2,21 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>Reselect</title>
-    <link>https://raw.githubusercontent.com/mfouquet/Reselect/master/appcast.xml</link>
+    <link>https://raw.githubusercontent.com/mfouquet/Reselect/main/appcast.xml</link>
     <description>Quickly reselect a previous selection and save selections for later use.</description>
     <language>en</language>
+      <item>
+        <title>Version 2.1.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Complete rewrite of plugin to get it working with latest versions of Sketch.</li>
+            </ul>
+          ]]>
+        </description>
+        <pubDate>Sat, 11 Jul 2020 08:00:00 +0000</pubDate>
+        <enclosure url="https://github.com/mfouquet/Reselect/archive/v2.1.0.zip" sparkle:version="2.1.0" type="application/octet-stream" />
+      </item>
       <item>
         <title>Version 2.0</title>
         <description>
