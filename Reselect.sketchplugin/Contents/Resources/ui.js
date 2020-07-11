@@ -29958,11 +29958,8 @@ __webpack_require__.r(__webpack_exports__);
 
 if (false) {}
 
-window.prepareFirstLoad = function (npsObject) {
-  var jsonUiObject = JSON.parse(npsObject);
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_tsx__WEBPACK_IMPORTED_MODULE_2__["Plugin"], {
-    pluginMessage: jsonUiObject
-  }), document.getElementById("react-page"));
+window.prepareFirstLoad = function () {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_tsx__WEBPACK_IMPORTED_MODULE_2__["Plugin"], null), document.getElementById("react-page"));
 };
 
 /***/ }),
@@ -30010,71 +30007,49 @@ var Plugin = /** @class */ (function (_super) {
             window.postMessage("versionButtonClicked", "");
         };
         _this.handleSaveClick = function () {
-            window.postMessage("saveButtonClicked", JSON.stringify({
-                nudgeAmount: _this.state.nudge,
-                pushAmount: _this.state.push,
-                shoveAmount: _this.state.shove,
-            }));
+            // window.postMessage(
+            //   "saveButtonClicked",
+            //   JSON.stringify({
+            //     nudgeAmount: this.state.nudge,
+            //     pushAmount: this.state.push,
+            //     shoveAmount: this.state.shove,
+            //   })
+            // );
         };
-        _this.handleResetClick = function () {
-            _this.setState({
-                nudge: "1",
-                push: "10",
-                shove: "15",
-            });
-        };
-        _this.state = {
-            nudge: _this.props.pluginMessage.nudgeAmount,
-            push: _this.props.pluginMessage.pushAmount,
-            shove: _this.props.pluginMessage.shoveAmount,
-        };
+        // this.state = {
+        //   nudge: this.props.pluginMessage.nudgeAmount,
+        //   push: this.props.pluginMessage.pushAmount,
+        //   shove: this.props.pluginMessage.shoveAmount,
+        // };
         _this.handleDismissClick = _this.handleDismissClick.bind(_this);
         _this.handleWebsiteClick = _this.handleWebsiteClick.bind(_this);
         _this.handleHelpClick = _this.handleHelpClick.bind(_this);
         _this.handleVersionClick = _this.handleVersionClick.bind(_this);
-        _this.handleNudgeChange = _this.handleNudgeChange.bind(_this);
-        _this.handlePushChange = _this.handlePushChange.bind(_this);
-        _this.handleShoveChange = _this.handleShoveChange.bind(_this);
         _this.handleSaveClick = _this.handleSaveClick.bind(_this);
-        _this.handleResetClick = _this.handleResetClick.bind(_this);
         return _this;
     }
-    Plugin.prototype.handleNudgeChange = function (e) {
-        this.setState({ nudge: e.target.value });
-    };
-    Plugin.prototype.handlePushChange = function (e) {
-        this.setState({ push: e.target.value });
-    };
-    Plugin.prototype.handleShoveChange = function (e) {
-        this.setState({ shove: e.target.value });
-    };
     Plugin.prototype.render = function () {
-        var _a = this.state, nudge = _a.nudge, push = _a.push, shove = _a.shove;
+        // const { nudge, push, shove } = this.state;
         return (React.createElement("div", { className: "dialog" },
             React.createElement("div", { className: "dismiss", onClick: this.handleDismissClick },
                 React.createElement("svg", { width: "10", height: "10", viewBox: "0 0 10 10", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                     React.createElement("path", { d: "M9 1L1 9", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round", strokeLinejoin: "round" }),
                     React.createElement("path", { d: "M1 1L9 9", stroke: "currentColor", strokeWidth: "1", strokeLinecap: "round", strokeLinejoin: "round" }))),
-            React.createElement("header", null,
+            React.createElement("header", null),
+            React.createElement("main", null,
+                React.createElement("h3", null, "Max Recent Selections Restored"),
+                React.createElement("div", null,
+                    React.createElement("input", { value: "10" }),
+                    React.createElement("button", null, "Up"),
+                    React.createElement("button", null, "Down")),
+                React.createElement("p", null, "Setting this too high can adversely affect performance"),
+                React.createElement("button", { className: "button--save", onClick: this.handleSaveClick }, "Save")),
+            React.createElement("footer", null,
                 React.createElement("button", { onClick: this.handleWebsiteClick }, "Website"),
                 React.createElement("span", { className: "separator" }, "\u00B7"),
                 React.createElement("button", { onClick: this.handleHelpClick }, "Help"),
                 React.createElement("span", { className: "separator" }, "\u00B7"),
-                React.createElement("button", { onClick: this.handleVersionClick }, "1.4.2")),
-            React.createElement("main", null,
-                React.createElement("div", { className: "row" },
-                    React.createElement("label", null, "Nudge"),
-                    React.createElement("input", { autoFocus: true, type: "number", value: nudge, onChange: this.handleNudgeChange })),
-                React.createElement("div", { className: "divider" }),
-                React.createElement("div", { className: "row" },
-                    React.createElement("label", null, "Push"),
-                    React.createElement("input", { type: "number", value: push, onChange: this.handlePushChange })),
-                React.createElement("div", { className: "divider" }),
-                React.createElement("div", { className: "row" },
-                    React.createElement("label", null, "Shove"),
-                    React.createElement("input", { type: "number", value: shove, onChange: this.handleShoveChange })),
-                React.createElement("button", { className: "button--save", onClick: this.handleSaveClick }, "Save"),
-                React.createElement("button", { onClick: this.handleResetClick }, "Reset"))));
+                React.createElement("button", { onClick: this.handleVersionClick }, "2.1.0"))));
     };
     return Plugin;
 }(React.Component));
