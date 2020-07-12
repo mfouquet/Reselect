@@ -1,1 +1,0 @@
-{"maxReselectAmount":"10"}

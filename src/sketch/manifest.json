@@ -72,7 +72,5 @@
       "deleteSelection",
       "showSettings"
     ]
-  },
-  "homepage": "http://www.reselect.co",
-  "author": "Michael Fouquet"
+  }
 }

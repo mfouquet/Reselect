@@ -1,0 +1,65 @@
+{
+  "name": "reselect",
+  "version": "1.0.0",
+  "description": "Restore a previous selection.",
+  "main": "index.js",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "skpm": {
+    "name": "Reselect",
+    "manifest": "src/sketch/manifest.json",
+    "main": "Reselect.sketchplugin",
+    "assets": [
+      "src/images/**/*"
+    ]
+  },
+  "scripts": {
+    "build": "rimraf Reselect.sketchplugin && skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "resources": [
+    "src/web/ui.js"
+  ],
+  "devDependencies": {
+    "@skpm/builder": "^0.5.11",
+    "@skpm/extract-loader": "^2.0.2",
+    "@skpm/fs": "^0.2.2",
+    "@skpm/path": "^0.1.4",
+    "@skpm/process": "^0.1.4",
+    "@types/node": "^12.7.1",
+    "@types/react": "^16.9.1",
+    "@types/react-dom": "^16.8.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^2.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.15.3",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "sketch-module-web-view": "^3.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfouquet/Reselect.git"
+  },
+  "author": "Michael Fouquet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfouquet/Reselect/issues"
+  },
+  "homepage": "http://www.reselect.co"
+}
