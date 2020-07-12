@@ -2919,12 +2919,10 @@ var showSettings = function showSettings() {
     browserWindow.show();
   });
   webContents.on("did-finish-load", function () {
-    // const npsObject = {
-    //   nudgeAmount: utils.loadGlobalSetting(SETTINGS_GLOBAL_NUDGESMALL),
-    //   pushAmount: utils.loadGlobalSetting(SETTINGS_GLOBAL_NUDGEBIG),
-    //   shoveAmount: utils.loadPluginSetting(SETTINGS_PLUGIN_SHOVE),
-    // };
-    webContents.executeJavaScript("prepareFirstLoad()").catch(console.error);
+    var resObject = {
+      reselectAmount: _utilities_utilities__WEBPACK_IMPORTED_MODULE_1__["loadPluginSetting"](_utilities_constants__WEBPACK_IMPORTED_MODULE_2__["SETTINGS_PLUGIN_RESELECTAMOUNT"]) || 10
+    };
+    webContents.executeJavaScript("prepareFirstLoad('".concat(JSON.stringify(resObject), "')")).catch(console.error);
   });
   webContents.on("dismissClicked", function () {
     browserWindow.close();
@@ -2938,11 +2936,10 @@ var showSettings = function showSettings() {
   webContents.on("versionButtonClicked", function () {
     _utilities_utilities__WEBPACK_IMPORTED_MODULE_1__["openURL"](_utilities_constants__WEBPACK_IMPORTED_MODULE_2__["URL_CHANGELOG"]);
   });
-  webContents.on("saveButtonClicked", function (saveButtonClickedObject) {// const npsObject = JSON.parse(saveButtonClickedObject);
-    // utils.saveGlobalSetting(SETTINGS_GLOBAL_NUDGESMALL, +npsObject.nudgeAmount);
-    // utils.saveGlobalSetting(SETTINGS_GLOBAL_NUDGEBIG, +npsObject.pushAmount);
-    // utils.savePluginSetting(SETTINGS_PLUGIN_SHOVE, +npsObject.shoveAmount);
-    // utils.showToast("Nudge, Push, Shove settings saved successfully!");
+  webContents.on("saveButtonClicked", function (saveButtonClickedObject) {
+    var resObject = JSON.parse(saveButtonClickedObject);
+    _utilities_utilities__WEBPACK_IMPORTED_MODULE_1__["savePluginSetting"](_utilities_constants__WEBPACK_IMPORTED_MODULE_2__["SETTINGS_PLUGIN_RESELECTAMOUNT"], +resObject.reselectAmount);
+    _utilities_utilities__WEBPACK_IMPORTED_MODULE_1__["showToast"]("Reselect settings saved successfully!");
   });
   browserWindow.loadURL(__webpack_require__(/*! ../web/ui.html */ "./src/web/ui.html"));
 };
@@ -2955,17 +2952,16 @@ var showSettings = function showSettings() {
 /*!*******************************************!*\
   !*** ./src/sketch/utilities/constants.js ***!
   \*******************************************/
-/*! exports provided: URL_WEBSITE, URL_HELP, URL_CHANGELOG */
+/*! exports provided: SETTINGS_PLUGIN_RESELECTAMOUNT, URL_WEBSITE, URL_HELP, URL_CHANGELOG */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SETTINGS_PLUGIN_RESELECTAMOUNT", function() { return SETTINGS_PLUGIN_RESELECTAMOUNT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_WEBSITE", function() { return URL_WEBSITE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_HELP", function() { return URL_HELP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_CHANGELOG", function() { return URL_CHANGELOG; });
-// const SETTINGS_GLOBAL_NUDGESMALL = "nudgeDistanceSmall";
-// const SETTINGS_GLOBAL_NUDGEBIG = "nudgeDistanceBig";
-// const SETTINGS_PLUGIN_SHOVE = "shove";
+var SETTINGS_PLUGIN_RESELECTAMOUNT = "amount";
 var URL_WEBSITE = "http://www.reselect.co/";
 var URL_HELP = "http://www.reselect.co/";
 var URL_CHANGELOG = "https://github.com/mfouquet/Reselect/releases";

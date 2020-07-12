@@ -30016,8 +30016,11 @@ __webpack_require__.r(__webpack_exports__);
 
 if (false) {}
 
-window.prepareFirstLoad = function () {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_tsx__WEBPACK_IMPORTED_MODULE_2__["Plugin"], null), document.getElementById("react-page"));
+window.prepareFirstLoad = function (resObject) {
+  var jsonUiObject = JSON.parse(resObject);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_tsx__WEBPACK_IMPORTED_MODULE_2__["Plugin"], {
+    pluginMessage: jsonUiObject
+  }), document.getElementById("react-page"));
 };
 
 /***/ }),
@@ -30065,29 +30068,26 @@ var Plugin = /** @class */ (function (_super) {
             window.postMessage("versionButtonClicked", "");
         };
         _this.handleSaveClick = function () {
-            // window.postMessage(
-            //   "saveButtonClicked",
-            //   JSON.stringify({
-            //     nudgeAmount: this.state.nudge,
-            //     pushAmount: this.state.push,
-            //     shoveAmount: this.state.shove,
-            //   })
-            // );
+            window.postMessage("saveButtonClicked", JSON.stringify({
+                reselectAmount: _this.state.reselectAmount,
+            }));
         };
-        // this.state = {
-        //   nudge: this.props.pluginMessage.nudgeAmount,
-        //   push: this.props.pluginMessage.pushAmount,
-        //   shove: this.props.pluginMessage.shoveAmount,
-        // };
+        _this.state = {
+            reselectAmount: _this.props.pluginMessage.reselectAmount,
+        };
         _this.handleDismissClick = _this.handleDismissClick.bind(_this);
         _this.handleWebsiteClick = _this.handleWebsiteClick.bind(_this);
         _this.handleHelpClick = _this.handleHelpClick.bind(_this);
         _this.handleVersionClick = _this.handleVersionClick.bind(_this);
+        _this.handleAmountChange = _this.handleAmountChange.bind(_this);
         _this.handleSaveClick = _this.handleSaveClick.bind(_this);
         return _this;
     }
+    Plugin.prototype.handleAmountChange = function (e) {
+        this.setState({ reselectAmount: e.target.value });
+    };
     Plugin.prototype.render = function () {
-        // const { nudge, push, shove } = this.state;
+        var reselectAmount = this.state.reselectAmount;
         return (React.createElement("div", { className: "dialog" },
             React.createElement("div", { className: "dismiss", onClick: this.handleDismissClick },
                 React.createElement("svg", { width: "10", height: "10", viewBox: "0 0 10 10", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
@@ -30097,7 +30097,7 @@ var Plugin = /** @class */ (function (_super) {
             React.createElement("main", null,
                 React.createElement("h3", null, "Max Recent Selections Restored"),
                 React.createElement("div", null,
-                    React.createElement("input", { autoFocus: true, value: "10" })),
+                    React.createElement("input", { autoFocus: true, type: "number", value: reselectAmount, onChange: this.handleAmountChange })),
                 React.createElement("p", null, "Setting this too high can adversely affect performance"),
                 React.createElement("button", { className: "button--save", onClick: this.handleSaveClick }, "Save")),
             React.createElement("footer", null,

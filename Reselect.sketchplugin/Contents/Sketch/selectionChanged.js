@@ -102,6 +102,8 @@ var exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectionChanged", function() { return selectionChanged; });
 /* harmony import */ var _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utilities/utilities */ "./src/sketch/utilities/utilities.js");
+/* harmony import */ var _utilities_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utilities/constants */ "./src/sketch/utilities/constants.js");
+
 
 
 var selectionChanged = function selectionChanged(context) {
@@ -109,7 +111,7 @@ var selectionChanged = function selectionChanged(context) {
 
   if (!hasReselected) {
     var selections = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadSessionVariable"]("selections") || [];
-    var reselectAmount = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadPluginSetting"]("amount") || 10;
+    var reselectAmount = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadPluginSetting"](_utilities_constants__WEBPACK_IMPORTED_MODULE_1__["SETTINGS_PLUGIN_RESELECTAMOUNT"]) || 10;
     var previousSelection = context.actionContext.oldSelection;
 
     if (previousSelection.length > 0) {
@@ -121,17 +123,39 @@ var selectionChanged = function selectionChanged(context) {
 
       selections.push(previousSelectionIds);
 
-      if (selections.length >= reselectAmount) {
+      if (selections.length > reselectAmount) {
         selections.shift();
       }
 
       _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["saveSessionVariable"]("selections", selections);
+      console.log(selections);
     }
   } else {
     _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["saveSessionVariable"]("hasReselected", false);
   }
 };
 
+
+
+/***/ }),
+
+/***/ "./src/sketch/utilities/constants.js":
+/*!*******************************************!*\
+  !*** ./src/sketch/utilities/constants.js ***!
+  \*******************************************/
+/*! exports provided: SETTINGS_PLUGIN_RESELECTAMOUNT, URL_WEBSITE, URL_HELP, URL_CHANGELOG */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SETTINGS_PLUGIN_RESELECTAMOUNT", function() { return SETTINGS_PLUGIN_RESELECTAMOUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_WEBSITE", function() { return URL_WEBSITE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_HELP", function() { return URL_HELP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_CHANGELOG", function() { return URL_CHANGELOG; });
+var SETTINGS_PLUGIN_RESELECTAMOUNT = "amount";
+var URL_WEBSITE = "http://www.reselect.co/";
+var URL_HELP = "http://www.reselect.co/";
+var URL_CHANGELOG = "https://github.com/mfouquet/Reselect/releases";
 
 
 /***/ }),

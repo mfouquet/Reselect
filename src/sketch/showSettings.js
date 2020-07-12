@@ -1,6 +1,11 @@
 import BrowserWindow from "sketch-module-web-view";
 import * as utils from "./utilities/utilities";
-import { URL_WEBSITE, URL_HELP, URL_CHANGELOG } from "./utilities/constants";
+import {
+  SETTINGS_PLUGIN_RESELECTAMOUNT,
+  URL_WEBSITE,
+  URL_HELP,
+  URL_CHANGELOG,
+} from "./utilities/constants";
 
 const showSettings = () => {
   const options = {
@@ -23,12 +28,13 @@ const showSettings = () => {
   });
 
   webContents.on("did-finish-load", () => {
-    // const npsObject = {
-    //   nudgeAmount: utils.loadGlobalSetting(SETTINGS_GLOBAL_NUDGESMALL),
-    //   pushAmount: utils.loadGlobalSetting(SETTINGS_GLOBAL_NUDGEBIG),
-    //   shoveAmount: utils.loadPluginSetting(SETTINGS_PLUGIN_SHOVE),
-    // };
-    webContents.executeJavaScript(`prepareFirstLoad()`).catch(console.error);
+    const resObject = {
+      reselectAmount:
+        utils.loadPluginSetting(SETTINGS_PLUGIN_RESELECTAMOUNT) || 10,
+    };
+    webContents
+      .executeJavaScript(`prepareFirstLoad('${JSON.stringify(resObject)}')`)
+      .catch(console.error);
   });
 
   webContents.on("dismissClicked", () => {
@@ -48,11 +54,12 @@ const showSettings = () => {
   });
 
   webContents.on("saveButtonClicked", (saveButtonClickedObject) => {
-    // const npsObject = JSON.parse(saveButtonClickedObject);
-    // utils.saveGlobalSetting(SETTINGS_GLOBAL_NUDGESMALL, +npsObject.nudgeAmount);
-    // utils.saveGlobalSetting(SETTINGS_GLOBAL_NUDGEBIG, +npsObject.pushAmount);
-    // utils.savePluginSetting(SETTINGS_PLUGIN_SHOVE, +npsObject.shoveAmount);
-    // utils.showToast("Nudge, Push, Shove settings saved successfully!");
+    const resObject = JSON.parse(saveButtonClickedObject);
+    utils.savePluginSetting(
+      SETTINGS_PLUGIN_RESELECTAMOUNT,
+      +resObject.reselectAmount
+    );
+    utils.showToast("Reselect settings saved successfully!");
   });
 
   browserWindow.loadURL(require("../web/ui.html"));

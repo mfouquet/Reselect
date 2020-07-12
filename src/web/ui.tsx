@@ -2,32 +2,27 @@ import * as React from "react";
 import "./ui.css";
 
 interface IProps {
-  // pluginMessage: {
-  //   nudgeAmount: string | number;
-  //   pushAmount: string | number;
-  //   shoveAmount: string | number;
-  // };
+  pluginMessage: {
+    reselectAmount: string | number;
+  };
 }
 
 interface IState {
-  // nudge: string | number;
-  // push: string | number;
-  // shove: string | number;
+  reselectAmount: string | number;
 }
 
 export class Plugin extends React.Component<IProps, IState> {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   nudge: this.props.pluginMessage.nudgeAmount,
-    //   push: this.props.pluginMessage.pushAmount,
-    //   shove: this.props.pluginMessage.shoveAmount,
-    // };
+    this.state = {
+      reselectAmount: this.props.pluginMessage.reselectAmount,
+    };
 
     this.handleDismissClick = this.handleDismissClick.bind(this);
     this.handleWebsiteClick = this.handleWebsiteClick.bind(this);
     this.handleHelpClick = this.handleHelpClick.bind(this);
     this.handleVersionClick = this.handleVersionClick.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
   }
 
@@ -47,19 +42,21 @@ export class Plugin extends React.Component<IProps, IState> {
     window.postMessage("versionButtonClicked", "");
   };
 
+  handleAmountChange(e) {
+    this.setState({ reselectAmount: e.target.value });
+  }
+
   handleSaveClick = () => {
-    // window.postMessage(
-    //   "saveButtonClicked",
-    //   JSON.stringify({
-    //     nudgeAmount: this.state.nudge,
-    //     pushAmount: this.state.push,
-    //     shoveAmount: this.state.shove,
-    //   })
-    // );
+    window.postMessage(
+      "saveButtonClicked",
+      JSON.stringify({
+        reselectAmount: this.state.reselectAmount,
+      })
+    );
   };
 
   render() {
-    // const { nudge, push, shove } = this.state;
+    const { reselectAmount } = this.state;
     return (
       <div className="dialog">
         <div className="dismiss" onClick={this.handleDismissClick}>
@@ -90,7 +87,12 @@ export class Plugin extends React.Component<IProps, IState> {
         <main>
           <h3>Max Recent Selections Restored</h3>
           <div>
-            <input autoFocus value="10" />
+            <input
+              autoFocus
+              type="number"
+              value={reselectAmount}
+              onChange={this.handleAmountChange}
+            />
           </div>
           <p>Setting this too high can adversely affect performance</p>
           <button className="button--save" onClick={this.handleSaveClick}>
