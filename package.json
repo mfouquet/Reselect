@@ -27,6 +27,8 @@
     "@skpm/builder": "^0.5.11",
     "@skpm/extract-loader": "^2.0.2",
     "@skpm/fs": "^0.2.2",
+    "@skpm/path": "^0.1.4",
+    "@skpm/process": "^0.1.4",
     "@types/node": "^12.7.1",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
