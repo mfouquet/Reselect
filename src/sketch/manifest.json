@@ -14,7 +14,7 @@
       "script": "selectionChanged.js",
       "handlers": {
         "actions": {
-          "SelectionChanged.finish": "onSelectionChanged"
+          "SelectionChanged.finish": "selectionChanged"
         }
       }
     },

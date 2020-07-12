@@ -2966,7 +2966,7 @@ __webpack_require__.r(__webpack_exports__);
 // const SETTINGS_GLOBAL_NUDGESMALL = "nudgeDistanceSmall";
 // const SETTINGS_GLOBAL_NUDGEBIG = "nudgeDistanceBig";
 // const SETTINGS_PLUGIN_SHOVE = "shove";
-var URL_WEBSITE = "http://www.reselect.com/";
+var URL_WEBSITE = "http://www.reselect.co/";
 var URL_HELP = "http://www.reselect.co/";
 var URL_CHANGELOG = "https://github.com/mfouquet/Reselect/releases";
 
@@ -2977,7 +2977,7 @@ var URL_CHANGELOG = "https://github.com/mfouquet/Reselect/releases";
 /*!*******************************************!*\
   !*** ./src/sketch/utilities/utilities.js ***!
   \*******************************************/
-/*! exports provided: saveGlobalSetting, loadGlobalSetting, savePluginSetting, loadPluginSetting, openURL, showToast */
+/*! exports provided: saveGlobalSetting, loadGlobalSetting, savePluginSetting, loadPluginSetting, saveSessionVariable, loadSessionVariable, openURL, showToast */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2986,6 +2986,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadGlobalSetting", function() { return loadGlobalSetting; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "savePluginSetting", function() { return savePluginSetting; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadPluginSetting", function() { return loadPluginSetting; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveSessionVariable", function() { return saveSessionVariable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadSessionVariable", function() { return loadSessionVariable; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openURL", function() { return openURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showToast", function() { return showToast; });
 /* harmony import */ var sketch_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch/settings */ "sketch/settings");
@@ -3015,7 +3017,7 @@ Saves a plugin setting in Sketch to the provided key
 
 
 var savePluginSetting = function savePluginSetting(key, value) {
-  sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.setSettingForKey("com.mfouquet.sketch.nudgepushshove.".concat(key), value);
+  sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.setSettingForKey("com.mfouquet.sketch.reselect.".concat(key), value);
 };
 /* 
 Loads a plugin setting in Sketch with the provided key
@@ -3023,7 +3025,23 @@ Loads a plugin setting in Sketch with the provided key
 
 
 var loadPluginSetting = function loadPluginSetting(key) {
-  return sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.settingForKey("com.mfouquet.sketch.nudgepushshove.".concat(key));
+  return sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.settingForKey("com.mfouquet.sketch.reselect.".concat(key));
+};
+/* 
+Saves a session variable in Sketch to the provided key
+*/
+
+
+var saveSessionVariable = function saveSessionVariable(key, value) {
+  sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.setSessionVariable("com.mfouquet.sketch.reselect.".concat(key), value);
+};
+/* 
+Loads a session variable in Sketch with the provided key
+*/
+
+
+var loadSessionVariable = function loadSessionVariable(key) {
+  return sketch_settings__WEBPACK_IMPORTED_MODULE_0___default.a.sessionVariable("com.mfouquet.sketch.reselect.".concat(key));
 };
 /* 
 Opens a URL from Sketch

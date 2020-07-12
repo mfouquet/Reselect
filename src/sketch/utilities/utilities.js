@@ -19,14 +19,28 @@ const loadGlobalSetting = (key) => {
 Saves a plugin setting in Sketch to the provided key
 */
 const savePluginSetting = (key, value) => {
-  Settings.setSettingForKey(`com.mfouquet.sketch.nudgepushshove.${key}`, value);
+  Settings.setSettingForKey(`com.mfouquet.sketch.reselect.${key}`, value);
 };
 
 /* 
 Loads a plugin setting in Sketch with the provided key
 */
 const loadPluginSetting = (key) => {
-  return Settings.settingForKey(`com.mfouquet.sketch.nudgepushshove.${key}`);
+  return Settings.settingForKey(`com.mfouquet.sketch.reselect.${key}`);
+};
+
+/* 
+Saves a session variable in Sketch to the provided key
+*/
+const saveSessionVariable = (key, value) => {
+  Settings.setSessionVariable(`com.mfouquet.sketch.reselect.${key}`, value);
+};
+
+/* 
+Loads a session variable in Sketch with the provided key
+*/
+const loadSessionVariable = (key) => {
+  return Settings.sessionVariable(`com.mfouquet.sketch.reselect.${key}`);
 };
 
 /* 
@@ -49,6 +63,8 @@ export {
   loadGlobalSetting,
   savePluginSetting,
   loadPluginSetting,
+  saveSessionVariable,
+  loadSessionVariable,
   openURL,
   showToast,
 };
