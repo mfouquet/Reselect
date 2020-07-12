@@ -86,13 +86,11 @@ export class Plugin extends React.Component<IProps, IState> {
             />
           </svg>
         </div>
-        <header></header>
+        <header />
         <main>
           <h3>Max Recent Selections Restored</h3>
           <div>
-            <input value="10" />
-            <button>Up</button>
-            <button>Down</button>
+            <input autoFocus value="10" />
           </div>
           <p>Setting this too high can adversely affect performance</p>
           <button className="button--save" onClick={this.handleSaveClick}>

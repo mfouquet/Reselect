@@ -31,6 +31,11 @@ module.exports = (config) => {
     exclude: /node_modules/,
   });
   config.module.rules.push({
+    test: /\.(png|jpg)$/,
+    use: "url-loader",
+    exclude: /node_modules/,
+  });
+  config.module.rules.push({
     test: /\.(css)$/,
     use: [
       {

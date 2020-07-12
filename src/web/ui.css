@@ -1,6 +1,7 @@
 html,
 body {
-  background-color: #1d2d44;
+  background: url(../images/bg.png);
+  background-size: contain;
   font-family: system-ui;
   height: 100vh;
   margin: 0;
@@ -10,7 +11,11 @@ body {
 }
 
 .dialog {
-  padding: 24px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
 }
 
 .dismiss {
@@ -28,11 +33,59 @@ body {
 }
 
 header {
+  background: url(../images/header.png);
+  background-size: contain;
+  height: 81px;
+  margin-left: -16px;
+  margin-top: 48px;
+  width: 96px;
+}
+
+main {
   align-items: center;
   display: flex;
-  justify-content: center;
-  margin-top: 12px;
-  width: 100%;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+h3 {
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 24px;
+  font-weight: 700;
+  height: 30px;
+  margin: 0;
+  padding: 4px 8px;
+  text-align: center;
+  width: 28px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+p {
+  color: rgba(255, 255, 255, 1);
+  font-size: 10px;
+  line-height: 14px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+footer {
+  margin-bottom: 24px;
 }
 
 button {
@@ -61,15 +114,14 @@ button:not(.button--save):hover {
 }
 
 .button--save {
-  background-color: #8acd4f;
-  color: rgba(29, 45, 68, 1);
-  font-size: 24px;
+  background-color: #fbff12;
+  color: #0c0f0a;
+  font-size: 20px;
   font-weight: 900;
-  margin-bottom: 8px;
-  margin-top: 48px;
-  padding: 8px;
+  height: 44px;
+  margin-top: 24px;
   transition: transform 0.15s ease-in-out;
-  width: 168px;
+  width: 176px;
 }
 
 .button--save:focus,
@@ -85,53 +137,4 @@ button:not(.button--save):hover {
   color: rgba(237, 242, 244, 0.75);
   margin-top: -4px;
   padding: 0 8px;
-}
-
-main {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 32px;
-}
-
-.row {
-  width: 216px;
-  padding-right: 28px;
-  display: flex;
-  justify-content: flex-end;
-  box-sizing: border-box;
-}
-
-label {
-  color: rgba(237, 242, 244, 1);
-  font-size: 24px;
-  font-weight: 900;
-  margin-right: 16px;
-}
-
-input {
-  background-color: rgba(237, 242, 244, 1);
-  border: 0;
-  border-radius: 2px;
-  color: rgba(29, 45, 68, 1);
-  font-size: 24px;
-  font-weight: 700;
-  height: 30px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  width: 64px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.divider {
-  background-color: rgba(237, 242, 244, 0.25);
-  height: 1px;
-  margin: 24px 0;
-  width: 216px;
 }
