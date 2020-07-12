@@ -1,1 +1,0 @@
-{"selectionsArray":[{"selectionName":"1 layer","selection":["1A7F2455-EB56-4F35-BB6F-1E366BC4A955"]}]}

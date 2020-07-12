@@ -1339,23 +1339,25 @@ var saveCurrentSelection = function saveCurrentSelection() {
       var fileToOverwriteIndex = -1;
 
       for (var _i = 0; _i < documentFile.selectionsArray.length; _i++) {
-        if (documentFile.selectionsArray[_i].selectionName == selectionName) {
+        if (documentFile.selectionsArray[_i].selectionName === selectionName) {
           fileToOverwriteIndex = _i;
         }
       }
 
-      var alert = NSAlert.alloc().init();
-      alert.setMessageText("Warning");
-      alert.setInformativeText("A selection with that name already exists for this document. Would you like to overwrite?");
-      alert.addButtonWithTitle("Yes");
-      alert.addButtonWithTitle("No");
-      var responseCode = alert.runModal(); // If the user selects Yes (code 1000), pop it off the array. If the user selects
-      // No, exit out - (they'll have to go back and resave with a new name)
+      if (fileToOverwriteIndex !== -1) {
+        var alert = NSAlert.alloc().init();
+        alert.setMessageText("Warning");
+        alert.setInformativeText("A selection with that name already exists for this document. Would you like to overwrite?");
+        alert.addButtonWithTitle("Yes");
+        alert.addButtonWithTitle("No");
+        var responseCode = alert.runModal(); // If the user selects Yes (code 1000), pop it off the array. If the user selects
+        // No, exit out - (they'll have to go back and resave with a new name)
 
-      if (responseCode != "1000") {
-        return;
-      } else {
-        documentFile.selectionsArray.splice(fileToOverwriteIndex, 1);
+        if (responseCode != "1000") {
+          return;
+        } else {
+          documentFile.selectionsArray.splice(fileToOverwriteIndex, 1);
+        }
       }
     } else {
       documentFile = {
