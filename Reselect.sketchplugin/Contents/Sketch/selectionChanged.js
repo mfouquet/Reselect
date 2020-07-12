@@ -105,24 +105,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var selectionChanged = function selectionChanged(context) {
-  var selections = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadSessionVariable"]("selections") || [];
-  var reselectAmount = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadPluginSetting"]("amount");
-  var previousSelection = context.actionContext.oldSelection;
-  console.log(selections);
-  console.log(reselectAmount);
-  console.log(previousSelection);
-  console.log(previousSelection.length);
+  var hasReselected = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadSessionVariable"]("hasReselected");
 
-  if (previousSelection.length > 0) {
-    var previousSelectionIds = [];
+  if (!hasReselected) {
+    var selections = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadSessionVariable"]("selections") || [];
+    var reselectAmount = _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["loadPluginSetting"]("amount") || 10;
+    var previousSelection = context.actionContext.oldSelection;
 
-    for (var i = 0; i < previousSelection.length; i++) {
-      previousSelectionIds.push(previousSelection[i].objectID());
+    if (previousSelection.length > 0) {
+      var previousSelectionIds = [];
+
+      for (var i = 0; i < previousSelection.length; i++) {
+        previousSelectionIds.push(previousSelection[i].objectID());
+      }
+
+      selections.push(previousSelectionIds);
+
+      if (selections.length >= reselectAmount) {
+        selections.shift();
+      }
+
+      _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["saveSessionVariable"]("selections", selections);
     }
-
-    console.log(previousSelectionIds);
-    selections.push(previousSelectionIds);
-    _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["saveSessionVariable"]("selections", selections);
+  } else {
+    _utilities_utilities__WEBPACK_IMPORTED_MODULE_0__["saveSessionVariable"]("hasReselected", false);
   }
 };
 
